@@ -31,7 +31,7 @@ const UserDataPage = () => {
   useEffect(() => {
     const fetchUserData = async () => {
         try {
-          const userData = await getUserData();
+          const userData = await getUserData(userId);
           setUserData(userData.content);
           console.log('Dados do usuário:', userData);
           setIsLoading(false);

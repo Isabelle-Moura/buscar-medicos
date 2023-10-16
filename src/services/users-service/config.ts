@@ -24,9 +24,9 @@ export const getCounterTotalUsers = async () => {
   }
 }
 
-export const getUserData = async () => {
+export const getUserData = async (id: number) => {
   try {
-    const response = await api.get(`/users`, {
+    const response = await api.get(`/users?search=${id}`, {
       headers: { Authorization: token }
     })
     const userData = response.data.content
