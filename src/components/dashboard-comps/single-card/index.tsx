@@ -1,5 +1,7 @@
+// Style
 import * as S from './style'
 
+// Component Type
 interface Props {
   name: string // Name to display in the card
   info: string | number // Additional information for the card
@@ -7,6 +9,8 @@ interface Props {
   variant?: 'doctors' | 'contractors'; 
   status?: 'available' | 'unavailable'
 }
+
+// ---
 
 const Card = ({ name, info, icon, variant, status }: Props) => {
   const variantColors = {
@@ -26,7 +30,7 @@ const Card = ({ name, info, icon, variant, status }: Props) => {
           <S.IconsColorsTotal style={{
             backgroundColor: variant ? variantColors[variant] : (status ? statusColors[status] : ''),
           }}>
-            <img src={icon} width="25px" height="25px" />
+            <img src={icon} width="30px" height="30px" />
           </S.IconsColorsTotal>
         </div>
         <div>

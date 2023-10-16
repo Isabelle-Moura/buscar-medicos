@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
 export const ElipseImg = styled.img`
-  width: 220px;
+  width: 55%;
   margin-top: 15px;
   margin-left: 175px;
   position: absolute;
 `
 
 export const WomanImg = styled.img`
-  width: 170px;
+  width: 42%;
   margin-top: 10px;
   margin-left: 200px;
   position: absolute;
@@ -17,15 +17,15 @@ export const WomanImg = styled.img`
 export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 136px;
-  margin-left: 15px;
+  margin-top: 32%;
+  margin-left: 3%;
 `
 
 export const GreenBackground = styled.div`
   position: relative;
   background-color: ${({ theme }) => theme.colors.defaultGreen};
-  width: 400px;
-  margin: 12px 15px;
+  width: 35%;
+  margin: 0% 1% 0% 2%;
   height: 280px;
   border-radius: 15px;
   box-shadow: 15px 1px 40px #ecdef0;

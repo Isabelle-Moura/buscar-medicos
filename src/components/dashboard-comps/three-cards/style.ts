@@ -6,10 +6,10 @@ export const WhiteBackground = styled.div`
   align-items: flex-start;
   justify-content: center;
   box-shadow: 10px 1px 30px #ecdef0;
-  width: fit-content;
+  width: 100%;
   height: fit-content;
   border-radius: 20px;
-  margin: 3px 3px 10px 3px;
+  margin: 1.5%;
 `
 
 export const CardsWrapper = styled.div`
@@ -23,7 +23,7 @@ export const ContentTitle = styled.div`
   font-size: 18px;
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   font-family: ${({ theme }) => theme.fonts.poppins};
-  margin: 8px 5px 0px 10px;
+  margin: 1% 2% 0% 3%;
   padding: 2px;
 `
 

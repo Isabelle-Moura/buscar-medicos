@@ -4,7 +4,7 @@ import * as S from './style'
 //Components
 import Greetings from '../../components/dashboard-comps/page-greetings'
 import Cards from '../../components/dashboard-comps/three-cards'
-// import TableDashboard from '../../components/all-tables/table-dashboard'
+import TableDashboard from '../../components/tables/table-dashboard'
 
 //Icons
 import RightArrowBlueIcon from '../../assets/icons/blue-right-arrow.png'
@@ -28,7 +28,7 @@ const DashboardPage = () => {
             </S.StyledLink>
           </S.TableContainer>
 
-          {/* <TableDashboard /> */}
+          <TableDashboard />
         </S.WhiteBackground>
       </div>
     </>

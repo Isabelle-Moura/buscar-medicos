@@ -1,16 +1,21 @@
-import { DetailedHTMLProps, InputHTMLAttributes, RefObject } from 'react'
+// Style
 import * as S from './style'
 
-// Interface that defines all props spected in the component
+// Special Type
+import { DetailedHTMLProps, InputHTMLAttributes, RefObject } from 'react'
+
+// Component Type
 interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   label: string 
   id: string 
   placeholder: string 
-  isWrong?: boolean // To check error in field
-  icon?: string // To set icon inside the input
-  onIcon?: () => void // Callback function to deal with icon click events
+  isWrong?: boolean 
+  icon?: string 
+  onIcon?: () => void 
   ref?: ((instance: HTMLInputElement | null) => void) | RefObject<HTMLInputElement> | null | undefined // Input reference 
 }
+
+// ---
 
 const Input = ({ label, id, placeholder, isWrong, icon, onIcon, ...props }: InputProps) => {
 

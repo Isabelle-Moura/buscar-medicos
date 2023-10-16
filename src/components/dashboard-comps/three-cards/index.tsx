@@ -8,7 +8,7 @@ import Card from '../single-card'
 import { useEffect, useState } from 'react'
 
 //Icons
-import DoctorsIcon from '../../../assets/icons/register-users.png'
+import DoctorsIcon from '../../../assets/icons/doctor.png'
 import ContractorsIcon from '../../../assets/icons/hirer.png'
 
 //Component Service
@@ -56,7 +56,7 @@ const Cards = () => {
         <S.WhiteBackground>
           <S.ContentTitle>Médicos</S.ContentTitle>
           <S.CardsWrapper>
-            <Card icon={DoctorsIcon} name="Total" info={doctor.total} variant="doctors"/>
+            <Card icon={DoctorsIcon} name="Total" info={doctor.total} variant="doctors" />
             <Card icon={DoctorsIcon} name="Disponíveis" info={doctor.available} status='available' />
             <Card icon={DoctorsIcon} name="Indisponíveis" info={doctor.unavailable} status='unavailable' />
           </S.CardsWrapper>

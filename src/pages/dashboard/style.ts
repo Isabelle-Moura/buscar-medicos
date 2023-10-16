@@ -25,7 +25,7 @@ export const ContentTitle = styled.div`
 `
 export const TableContainer = styled.div`
   display: flex;
-  gap: 730px;
+  gap: 53vw;
   padding: 2px;
 `
 
@@ -34,7 +34,7 @@ export const WhiteBackground = styled.div`
   flex-direction: column;
   align-items: flex-start;
   box-shadow: 3px 1px 30px #ecdef0;
-  width: full-width;
+  width: 98%;
   height: fit-content;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 20px;
