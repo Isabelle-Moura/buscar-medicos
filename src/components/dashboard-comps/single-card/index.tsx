@@ -1,45 +1,39 @@
 import * as S from './style'
 
-type CardType = 'DOCTORS' | 'HIRERS'
-type Status = 'AVAILABLE' | 'UNAVAILABLE' // Availability status (optional)
-
 interface Props {
   name: string // Name to display in the card
   info: string | number // Additional information for the card
   icon: string // Icon to be displayed in the card
-  variant?: CardType// Type of card (optional)
-  status?: Status | undefined
+  variant?: 'doctors' | 'contractors'; 
+  status?: 'available' | 'unavailable'
 }
 
 const Card = ({ name, info, icon, variant, status }: Props) => {
+  const variantColors = {
+    doctors: '#004ce8',
+    contractors: '#ffb801'
+  };
+
+  const statusColors = {
+    available: '#00c240',
+    unavailable: '#ff3333'
+  };
+
   return (
     <>  
-    {/* If props "variant" is used when Card component is called, then this will be render. If not, then that will be render*/}
-      {variant ? (
-        <S.CardBackground>
-          <div>
-            <S.IconsColorsTotal variant={variant}>
-              <img src={icon} width="28px" height="28px" />
-            </S.IconsColorsTotal>
-          </div>
-          <div>
-            <S.CardName>{name}</S.CardName>
-            <S.CardInfo>{info}</S.CardInfo>
-          </div>
-        </S.CardBackground>
-      ) : (
-        <S.CardBackground>
-          <div>
-            <S.AvailabilityIcons status={status}>
-              <img src={icon} width="28px" height="28px" />
-            </S.AvailabilityIcons>
-          </div>
-          <div>
-            <S.CardName>{name}</S.CardName>
-            <S.CardInfo>{info}</S.CardInfo>
-          </div>
-        </S.CardBackground>
-      )}
+      <S.CardBackground>
+        <div>
+          <S.IconsColorsTotal style={{
+            backgroundColor: variant ? variantColors[variant] : (status ? statusColors[status] : ''),
+          }}>
+            <img src={icon} width="25px" height="25px" />
+          </S.IconsColorsTotal>
+        </div>
+        <div>
+          <S.CardName>{name}</S.CardName>
+          <S.CardInfo>{info}</S.CardInfo>
+        </div>
+      </S.CardBackground>
     </>
   )
 }

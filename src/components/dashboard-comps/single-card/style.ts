@@ -25,9 +25,8 @@ export const CardInfo = styled.div`
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   font-family: ${({ theme }) => theme.fonts.sora};
 `
-
-export const IconsColorsTotal = styled.div<{ variant: 'DOCTORS' | 'HIRERS' }>`
-  background-color: ${({ theme, variant }) => (variant === 'DOCTORS' ? theme.iconsColor.blue : theme.iconsColor.yellow)};
+// <{ variant: 'DOCTORS' | 'HIRERS' }>
+export const IconsColorsTotal = styled.div`
   width: 60px;
   height: 60px;
   border-radius: 40px;
@@ -36,9 +35,8 @@ export const IconsColorsTotal = styled.div<{ variant: 'DOCTORS' | 'HIRERS' }>`
   justify-content: center;
   margin-right: 15px;
 `
-
-export const AvailabilityIcons = styled.div<{ status: 'AVAILABLE' | 'UNAVAILABLE' }>`
-  background-color: ${({ theme, status }) => (status === 'AVAILABLE' ? theme.iconsColor.green : theme.iconsColor.red)};
+// <{ status: 'AVAILABLE' | 'UNAVAILABLE' }>
+export const AvailabilityIcons = styled.div`
   width: 60px;
   height: 60px;
   border-radius: 40px;

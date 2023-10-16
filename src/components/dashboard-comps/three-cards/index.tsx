@@ -56,18 +56,18 @@ const Cards = () => {
         <S.WhiteBackground>
           <S.ContentTitle>Médicos</S.ContentTitle>
           <S.CardsWrapper>
-            <Card icon={DoctorsIcon} name="Total" info={doctor.total} variant="DOCTORS" />
-            <Card icon={DoctorsIcon} name="Disponíveis" info={doctor.available} status="AVAILABLE" />
-            <Card icon={DoctorsIcon} name="Indisponíveis" info={doctor.unavailable} status="UNAVAILABLE" />
+            <Card icon={DoctorsIcon} name="Total" info={doctor.total} variant="doctors"/>
+            <Card icon={DoctorsIcon} name="Disponíveis" info={doctor.available} status='available' />
+            <Card icon={DoctorsIcon} name="Indisponíveis" info={doctor.unavailable} status='unavailable' />
           </S.CardsWrapper>
         </S.WhiteBackground>
 
         <S.WhiteBackground>
           <S.ContentTitle>Contratantes</S.ContentTitle>
           <S.CardsWrapper>
-            <Card icon={ContractorsIcon} name="Total" info={contractors.total} variant="HIRERS" />
-            <Card icon={ContractorsIcon} name="Ativos" info={contractors.available} status="AVAILABLE" />
-            <Card icon={ContractorsIcon} name="Inativos" info={contractors.unavailable} status="UNAVAILABLE" />
+            <Card icon={ContractorsIcon} name="Total" info={contractors.total} variant="contractors"/>
+            <Card icon={ContractorsIcon} name="Ativos" info={contractors.available} status='available' />
+            <Card icon={ContractorsIcon} name="Inativos" info={contractors.unavailable} status='unavailable' />
           </S.CardsWrapper>
         </S.WhiteBackground>
       </S.CardsContainer>

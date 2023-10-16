@@ -54,7 +54,7 @@ const LoginPage = () => {
                 id="email"
                 placeholder="Insira seu e-mail"
                 onChange={e => setEmail(e.target.value)}
-                size="large"
+                width="large"
               />
               <Input
                 value={password}
@@ -66,7 +66,7 @@ const LoginPage = () => {
                 placeholder="Insira sua senha"
                 icon={showPassword ? EyeIcon : EyeSlashIcon}
                 onIcon={() => setShowPassword(!showPassword)}
-                size="large"
+                width="large"
               />
               <S.CheckAndForgetWrapper>
                 <S.CheckboxWrapper>

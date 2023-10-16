@@ -1,9 +1,6 @@
 import { DetailedHTMLProps, InputHTMLAttributes, RefObject } from 'react'
 import * as S from './style'
 
-// Set the imput size as 'large' ou 'small'
-type Size = 'large' | 'small'
-
 // Interface that defines all props spected in the component
 interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   label: string 
@@ -12,18 +9,17 @@ interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
   isWrong?: boolean // To check error in field
   icon?: string // To set icon inside the input
   onIcon?: () => void // Callback function to deal with icon click events
-  size?: Size 
   ref?: ((instance: HTMLInputElement | null) => void) | RefObject<HTMLInputElement> | null | undefined // Input reference 
 }
 
-const Input = ({ label, id, placeholder, size, isWrong, icon, onIcon, ...props }: InputProps) => {
+const Input = ({ label, id, placeholder, isWrong, icon, onIcon, ...props }: InputProps) => {
 
   // Determinates CSS class based on the current state of input
   const classStyle = [props.value ? 'active' : '', isWrong && props.value === '' ? 'error' : '']
 
   // Determintates input size based on size prop
   const inputSize = {
-    width: size === 'large' ? '320px' : '150px'
+    width: 'large' ? '320px' : '150px'
   }
 
   return (
