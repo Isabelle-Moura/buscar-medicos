@@ -57,7 +57,7 @@ const TableRegisterUsers = ({ selectedCategory }: Props) => {
   }, [selectedCategory])
 
   const handleUserClick = (id: number) => {
-    navigate(`/dados-do-usuario/${id}`, { state: { userId: id } });
+    navigate(`/dados-do-usuario/${id}`, { state: { message: 'Oi, eu fui redirecionado.', userId: id } });
   }
 
   return <TableComponent tHead={tHeadContent} tBody={allUserData} onUserClick={handleUserClick}/>

@@ -42,7 +42,7 @@ const UserDataPage = () => {
       }
 
     fetchUserData()
-  }, [])
+  }, [location])
 
   if (isLoading) {
     return <S.StyledH1>Carregando...</S.StyledH1>
