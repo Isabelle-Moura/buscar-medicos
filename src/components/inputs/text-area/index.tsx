@@ -8,13 +8,14 @@ import * as S from './style'
 interface Props extends DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> {
   id: string
   label: string
+  placeholder: string
   width?: string
   ref?: ((instance: HTMLTextAreaElement | null) => void) | RefObject<HTMLTextAreaElement> | null | undefined 
 }
 
 // ---
 
-const TextArea = ({ id, label, width }: Props) => {
+const TextArea = ({ id, label, width, placeholder }: Props) => {
   
   const inputStyle = {
     width: width === 'large' ? '650px' : '320px'
@@ -23,7 +24,7 @@ const TextArea = ({ id, label, width }: Props) => {
   return (
     <>
       <S.Container>
-        <S.Input id={id} style={{ ...inputStyle }} />
+        <S.Input id={id} style={{ ...inputStyle }} placeholder={placeholder} />
         <S.Label htmlFor={id}>{label}</S.Label>
       </S.Container>
     </>

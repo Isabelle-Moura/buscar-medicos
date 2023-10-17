@@ -26,11 +26,11 @@ interface PlansData {
   actions: ReactNode
 }
 
-// ---
-
 interface Props {
   selectedCategory: string
 }
+
+// ---
 
 const TablePlans = ({ selectedCategory }: Props) => {
   const [allPlans, setAllPlans] = useState<PlansData[]>([])

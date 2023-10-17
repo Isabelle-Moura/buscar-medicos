@@ -20,12 +20,12 @@ const SpecialitiesPage = () => {
       <PageTitle title="Especialidades" />
       <WhiteBackground>
         <div style={{ display: 'flex', }}>
-            <div  style={{ display: 'flex', alignItems: 'center'}}>
-            <SearchInput />
-            <FilterButton />
+            <div style={{ display: 'flex', alignItems: 'center', marginTop: '-6px'}}>
+              <SearchInput />
+              <FilterButton />
             </div>
-            <div style={{ margin: '5px 0px 5px 38vw' }} >
-            <MidButton variant="DEFAULT" name="Nova Especialidade" onClick={() => navigate('/nova-especialidade')} showIcon={true} />
+            <div style={{ margin: '10px 0px 10px 37.5vw'}} >
+               <MidButton variant="DEFAULT" name="Nova Especialidade" onClick={() => navigate('/nova-especialidade')} showIcon={true} />
             </div>
         </div>
 

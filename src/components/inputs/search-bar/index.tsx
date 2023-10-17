@@ -10,7 +10,7 @@ const SearchInput = () => {
   return (
     <>
       <div>
-        <S.Input placeholder="Pesquisa uma palavra-chave" />
+        <S.Input placeholder="Pesquise uma palavra-chave" />
         <S.Icon src={SearchIcon} />
       </div>
     </>

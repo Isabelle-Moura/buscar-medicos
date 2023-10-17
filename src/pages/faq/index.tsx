@@ -1,19 +1,17 @@
-import { useNavigate } from 'react-router-dom'
-import VisualizeIcon from '../../assets/icons/visualize.png'
-import VisualizeToolTip from '../../assets/icons/visualizeTooltip.png'
-import EditIcon from '../../assets/icons/edit.png'
-import EditToolTip from '../../assets/icons/editTooltip.png'
-import RemoveIcon from '../../assets/icons/delete.png'
-import RemoveToolTip from '../../assets/icons/removeTooltip.png'
+// Components
 import WhiteBackground from '../../components/extras-components/white-background'
 import MidButton from '../../components/buttons/mid-button'
 import Category from '../../components/extras-components/category'
 import PageTitle from '../../components/titles/page-title'
-import { useState } from 'react'
-import IconAndTooltipButton from '../../components/buttons/small-button-with-icon'
 import FilterButton from '../../components/extras-components/filter-button'
 import SearchInput from '../../components/inputs/search-bar'
+import TableFaq from '../../components/tables/table-faq'
 
+// Hooks
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+
+// ---
 
 const FAQPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<'MEDICO' | 'CONTRATANTE'>('MEDICO')
@@ -22,6 +20,7 @@ const FAQPage = () => {
     setSelectedCategory(category)
   }
   const navigate = useNavigate()
+  
   return (
     <>
       <div>
@@ -31,21 +30,17 @@ const FAQPage = () => {
           <Category name="Médicos" onCategoryChange={() => handleCategoryChange('CONTRATANTE')}/>
         </div>
         <WhiteBackground>
-        <div style={{ display: 'flex', gap: '38vw' }}>
-            <div style={{ display: 'flex'}}>
+        <div style={{ display: 'flex'}}>
+           <div style={{ display: 'flex', alignItems: 'center', marginTop: '-6px'}}>
               <SearchInput />
               <FilterButton />
             </div>
-            <div style={{ margin: '0px 5px 5px 0px' }} >
-              <MidButton variant="DEFAULT" name="Novo FAQ" onClick={() => navigate('/novo-faq')} showIcon={true} />
+            <div style={{ margin: '10px 0px 10px 39vw'  }} >
+              <MidButton variant="DEFAULT" name="Novo FAQ" onClick={() => navigate('/novo-faq')} showIcon={true} />            
             </div>
-        </div>
-
-          <div style={{ display: 'flex' }}>
-            <IconAndTooltipButton icon={VisualizeIcon} tooltip={VisualizeToolTip} hover="#EDEDED" />
-            <IconAndTooltipButton icon={EditIcon} tooltip={EditToolTip} hover="#edf1fc" />
-            <IconAndTooltipButton icon={RemoveIcon} tooltip={RemoveToolTip} hover="#ffe1e1" />
           </div>
+
+          <TableFaq selectedCategory={selectedCategory} />
         </WhiteBackground>
       </div>
     </>

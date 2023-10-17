@@ -30,4 +30,8 @@ export const Input = styled.textarea`
   color: ${({ theme }) => theme.colors.black};
   margin-right: 15px;
   resize: none;
+
+  &::placeholder {
+    color: ${({ theme }) => theme.colors.lightGray};
+  }
 `

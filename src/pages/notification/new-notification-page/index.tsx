@@ -47,11 +47,11 @@ const NewNotificationPage = () => {
       <WhiteBackground>
         <ContentTitle title="Dados da notificação" />
         <S.InputWrapper>
-          <Input id="notification-title" placeholder="" label="Título" width="large" />
-          <Input id="notification-date" placeholder="" label="Data de envio" width="large" />
+          <Input id="notification-title" placeholder="Insira o assunto da sua mensagem." label="Título" width="large" />
+          <Input id="notification-date" placeholder="Insira a data de envio." label="Data de envio" width="large" />
         </S.InputWrapper>
         <S.InputWrapper>
-          <TextArea id="message" label="Mensagem" width="large" />
+          <TextArea id="message" label="Mensagem" width="large" placeholder="Insira a sua mensagem aqui."/>
         </S.InputWrapper>
         <S.InputWrapper>
           <LargeButton name="Salvar" type="submit" variant="DEFAULT" onClick={() => openModal()} />
@@ -70,7 +70,7 @@ const NewNotificationPage = () => {
                     <Input id="notification-date" placeholder="" label="Data de envio" width="large" />
                   </S.InputWrapper>
                   <S.InputWrapper>
-                    <TextArea id="message" label="Mensagem" width="large" />
+                    <TextArea id="message" label="Mensagem" width="large" placeholder=""/>
                   </S.InputWrapper>
                   <S.ButtonsWrapper>
                     <S.Warning>

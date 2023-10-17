@@ -50,15 +50,15 @@ const PlansPage = () => {
           <Category name="Contratantes" total={counter} onCategoryChange={() => handleCategoryChange('CONTRATANTE')} />
         </div>
         <WhiteBackground>
-          <div style={{ display: 'flex', gap: '38vw' }}>
-            <div  style={{ display: 'flex'}}>
-            <SearchInput />
-            <FilterButton />
+        <div style={{ display: 'flex', }}>
+            <div style={{ display: 'flex', alignItems: 'center', marginTop: '-6px'}}>
+              <SearchInput />
+              <FilterButton />
             </div>
-            <div style={{ margin: '0px 5px 5px 0px' }} >
-              <MidButton variant="DEFAULT" name="Novo Plano" onClick={() => navigate('/novo-plano')} showIcon={true} />
+            <div style={{ margin: '10px 0px 10px 37.5vw'}} >
+              <MidButton variant="DEFAULT" name="Novo Plano" onClick={() => navigate('/novo-plano')} showIcon={true} />              
             </div>
-          </div>
+        </div>
           <TablePlans selectedCategory={selectedCategory} />
         </WhiteBackground>
       </div>
