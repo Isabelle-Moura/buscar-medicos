@@ -19,9 +19,9 @@ import FilterButton from '../../components/extras-components/filter-button'
 const PlansPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<'MEDICO' | 'CONTRATANTE'>('MEDICO')
   const [counter, setCounter] = useState(0)
-
+  
   const navigate = useNavigate()
-
+  
   const handleCategoryChange = (category: 'MEDICO' | 'CONTRATANTE') => {
     setSelectedCategory(category)
   }
@@ -50,10 +50,12 @@ const PlansPage = () => {
           <Category name="Contratantes" total={counter} onCategoryChange={() => handleCategoryChange('CONTRATANTE')} />
         </div>
         <WhiteBackground>
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', gap: '38vw' }}>
+            <div  style={{ display: 'flex'}}>
             <SearchInput />
             <FilterButton />
-            <div style={{ margin: '0px 5px 5px 540px' }}>
+            </div>
+            <div style={{ margin: '0px 5px 5px 0px' }} >
               <MidButton variant="DEFAULT" name="Novo Plano" onClick={() => navigate('/novo-plano')} showIcon={true} />
             </div>
           </div>

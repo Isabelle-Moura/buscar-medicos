@@ -9,7 +9,7 @@ export const Background = styled.div`
   height: fit-content;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 20px;
-  margin: -5px 12px 0px 12px;
+  margin: -5px 18px 0px 18px;
   padding: 2px;
   padding: 12px 10px;
 `

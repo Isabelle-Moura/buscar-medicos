@@ -33,8 +33,8 @@ interface Props {
 }
 
 const TablePlans = ({ selectedCategory }: Props) => {
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
   const [allPlans, setAllPlans] = useState<PlansData[]>([])
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
 
   const handleDeleteClick = () => {
     setShowDeleteConfirmation(true)

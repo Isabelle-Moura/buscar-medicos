@@ -4,10 +4,11 @@ export const Container = styled.div`
   display: flex;
   margin-bottom: 10px;
   align-items: center;
-  gap: 650px;
-`
+  gap: 45vw;
+  `
 
 export const Total = styled.div`
+  position: relative;
   margin-left: 15px;
   font-weight: ${({ theme }) => theme.fontWeight.medium};
   font-family: ${({ theme }) => theme.fonts.poppins};

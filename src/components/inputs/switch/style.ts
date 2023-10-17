@@ -36,6 +36,7 @@ export const Label = styled.span`
   bottom: 0;
   left: 50px;
   font-size: 14px;
+  font-weight: 500;
   color: #000;
   font-family: ${({ theme }) => theme.fonts.poppins};
 `

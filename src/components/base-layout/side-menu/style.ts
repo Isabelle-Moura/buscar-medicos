@@ -38,27 +38,26 @@ export const MenuBackground = styled.div`
   transition: all 0.3s;
 
   &.open {
-    min-width: 10%;
-
+    width: 17%;
+    
     .logo-large {
-        width: 150px;
+      width: 60%;
     }
-
+    
     .menu-item-open {
        justify-content: flex-start;
     }
   }
 
   &.close {
-    max-width: 5%;
+    width: 10%;
 
     .logo-small {
-        width: 10px;
+        width: 60%;
     }
     
     .menu-item-close {
         justify-content: center;
-
-    }
+  }
   }
 `

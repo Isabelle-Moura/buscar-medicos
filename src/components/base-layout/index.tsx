@@ -14,7 +14,7 @@ import Header from './header'
 // ---
 
 const BaseLayout = () => {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(true)
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)

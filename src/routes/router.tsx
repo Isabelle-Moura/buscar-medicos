@@ -8,6 +8,12 @@ import RegisterUsersPage from '../pages/register-users'
 import PlansPage from '../pages/plans'
 import NewPlanPage from '../pages/plans/new-plan-page'
 import UserDataPage from '../pages/register-users/user-data-page'
+import SpecialitiesPage from '../pages/specialties'
+import NewSpecialtyPage from '../pages/specialties/new-speciality-page'
+import NotificationPage from '../pages/notification'
+import NewNotificationPage from '../pages/notification/new-notification-page'
+import FAQPage from '../pages/faq'
+import NewQuestionPage from '../pages/faq/new-question-page'
 
 // ---
 
@@ -22,6 +28,12 @@ export default function Router() {
            <Route path='/dados-do-usuario/:id' element={<UserDataPage/>} />
            <Route path='/planos' element={<PlansPage/>} />
            <Route path='/novo-plano' element={<NewPlanPage/>} />
+           <Route path='/especialidades' element={<SpecialitiesPage/>} />
+           <Route path='/nova-especialidade' element={<NewSpecialtyPage />} />
+           <Route path='/notificacoes' element={<NotificationPage />} />
+           <Route path='/nova-notificacao' element={<NewNotificationPage />} />
+           <Route path='/faq' element={<FAQPage />} />
+           <Route path='/novo-faq' element={<NewQuestionPage />} />
         </Route>
         
      </Routes>
