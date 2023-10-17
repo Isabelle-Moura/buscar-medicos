@@ -3,7 +3,7 @@
 👉 Before we start our documentation, I would like to dedicate this whole project to:
 
 - **God, Jesus, and Blessed Mary**;
-- To my beautiful and wonderful family: **mom, Nana, Jessie, Grandpa, and Grandma**. I love you guys so badly!;
+- To my beautiful and wonderful family: **Mom, Nana, Jessie, Grandpa, and Grandma**. I love you guys so badly!;
 - And, last but not least, to all of my incredible and amazing teachers: **Prof. Alberto Timóteo, Prof. Lucas Ferreira, and Marcos Azevedo (Marcão)**;
 
 ### Without you guys, this wouldn't be possible. Thank you 💖💖💖!!!
