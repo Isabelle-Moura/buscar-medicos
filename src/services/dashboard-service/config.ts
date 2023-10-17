@@ -54,12 +54,12 @@ export const Callendar = async (): Promise<string | any> => {
     const currentMonth = months.find(months => months.id === month)
 
     if (!currentMonth) {
-      throw new Error('Mês não encontrado')
+      throw new Error(`Couldn't find any date :/`)
     }
 
     const formattedDate = `${day} de ${currentMonth.name} de ${year}`
     return formattedDate
   } catch (error) {
-    console.error('Ocorreu um erro ao obter a data atual:', error)
+    console.error('Something went wrong!:', error)
   }
 }
