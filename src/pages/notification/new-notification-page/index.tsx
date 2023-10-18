@@ -62,7 +62,7 @@ const NewNotificationPage = () => {
             <Modal onClose={closeModal}>
                 <ContentTitle title="Confirme os dados da notificação" />
                 <div style={{display: 'flex', flexDirection: 'column'}}>
-                  <div onClick={() => closeModal()} style={{cursor: 'pointer'}}>&times;</div>
+                  <div onClick={() => closeModal()} style={{cursor: 'pointer', marginLeft: '650px', fontSize: '20px'}}>&times;</div>
                   <div>Destinatário: <b>CONTRATANTE</b></div>
                 </div>
                   <S.InputWrapper>

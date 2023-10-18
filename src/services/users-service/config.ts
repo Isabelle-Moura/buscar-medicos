@@ -8,9 +8,9 @@ export const getRegisterUsers = async (page: number) => {
     const users = await api.get(`/users`, {
       headers: { Authorization: token },
       params: {
-      page,
-      size: 6
-      }
+        page,
+        size: 5,
+      },
     })
     return users.data
   } catch (error) {

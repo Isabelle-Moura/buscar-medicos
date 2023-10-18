@@ -6,24 +6,33 @@ import * as S from './style'
 
 // Component Type
 interface Props {
-  onCancel: () => void
-  onConfirm: () => void
+  onCancel: () => void;
+  onClose:  () => void
+  onConfirm: (itemId: number | null) => Promise<void>; // Modifique a assinatura
+  itemId: number | null;
 }
 
 // ---
 
-const DeleteConfirmation = ({ onCancel, onConfirm }: Props) => {
+const DeleteConfirmation = ({ onCancel, onConfirm, itemId, onClose }: Props) => {
+
+  const handleConfirm = () => {
+    onConfirm(itemId);
+  }
+
   return (
-    <S.Container>
-      <S.CloseTimes onClick={onCancel}>&times;</S.CloseTimes>
-      <S.Message>
-        Tem certeza que deseja <br />
-        <u style={{ color: 'red' }}>excluir</u> este item?
-      </S.Message>
-      <div onClick={onConfirm}>
-        <MidButton name="Sim, excluir item." variant="DEFAULT" />
-      </div>
-      <S.GoBackLink onClick={onCancel}>Voltar</S.GoBackLink>
+    <S.Container onClick={onClose}>
+      <S.MessageBackground >
+        <S.CloseTimes onClick={onCancel}>&times;</S.CloseTimes>
+        <S.Message>
+          Tem certeza que deseja <br />
+          <u style={{ color: 'red' }}>excluir</u> este item?
+        </S.Message>
+        <div onClick={handleConfirm}>
+          <MidButton name="Sim, excluir item." variant="DEFAULT" />
+        </div>
+        <S.GoBackLink onClick={onCancel}>Voltar</S.GoBackLink>
+      </S.MessageBackground>
     </S.Container>
   )
 }

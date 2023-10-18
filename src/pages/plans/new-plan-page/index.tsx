@@ -29,20 +29,22 @@ const NewPlanPage = () => {
     planTitle: '',
     enabled: false,
     period: 'Mensal',
-    values: 0 || ''
-  })
+    type: `${tipo}`,
+    values: '', // Inicialize como um número
+  });
 
   const handleCreateButton = async (planData: PlanData) => {
+    const values = typeof planData.values === 'string' ? parseFloat(planData.values) : planData.values;
+  
+    const dataToSend = { ...planData, values };
+  
     try {
-      const response = await createPlan(planData)
-      if (response) {
-        navigate('/planos')
-        setPlanData(response)
-      }
+      await createPlan(dataToSend);
+      navigate('/planos');
     } catch (error) {
-      console.error('Erro ao criar ou atualizar o plano: ', error)
+      console.error('Erro ao criar ou atualizar o plano: ', error);
     }
-  }
+  };
 
   return (
     <>

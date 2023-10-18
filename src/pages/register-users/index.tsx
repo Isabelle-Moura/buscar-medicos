@@ -5,34 +5,26 @@ import PageTitle from '../../components/titles/page-title'
 import WhiteBackground from '../../components/extras-components/white-background'
 
 // Service
-import { getCounterTotalUsers, getRegisterUsers } from '../../services/users-service/config'
-
+import { getCounterTotalUsers } from '../../services/users-service/config'
+// , getRegisterUsers
 // Hooks
 import { useEffect, useState } from 'react'
 import SearchAndTotal from '../../components/register-users-components/search-and-total'
-import Pagination from '../../components/extras-components/pagination'
 
 // ---
 
 const RegisterUsersPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<'Todos' | 'Médicos' | 'Contratantes'>('Todos');
 
-  const [allUsers, setAllUsers] = useState<RegisteredUserData[]>([]);
-  console.log(allUsers)
+  // const [allUsers, setAllUsers] = useState<RegisteredUserData[]>([]);
 
   const [totalUsers, setTotalUsers] = useState(0);
   const [allDoctors, setAllDoctors] = useState(0);
   const [allContractors, setAllContractors] = useState(0);
 
-  const [page, setPage] = useState(0); 
-  const [totalPages, setTotalPages] = useState(0); 
-
   const handleCategoryChange = (category: 'Todos' | 'Médicos' | 'Contratantes') => {
+    console.log("Category changed to:", category);
     setSelectedCategory(category);
-  };
-  
-  const handlePageChange = () => {
-    setPage(0);
   };
 
   useEffect(() => {
@@ -45,17 +37,14 @@ const RegisterUsersPage = () => {
       }
     };
   
-    const getAllUsers = async () => {
-      const response = await getRegisterUsers(page);
-      if (response) {
-        setAllUsers(response.content); 
-        setTotalPages(response.totalPages); 
-      }
-    };
+  //   const getAllUsers = async () => {
+  //     const response = await getRegisterUsers();
+  //     setAllUsers(response.content); 
+  // };
   
-    getAllUsers();
+  //   getAllUsers();
     counterAllUsers();
-  }, [selectedCategory, page]);
+  }, [selectedCategory]);
 
   return (
     <>
@@ -70,8 +59,6 @@ const RegisterUsersPage = () => {
           counter={selectedCategory === 'Todos' ? totalUsers : selectedCategory === 'Contratantes' ? allContractors : selectedCategory === 'Médicos' ? allDoctors : 0}
         />
         <TableRegisterUsers selectedCategory={selectedCategory}/>
-
-        <Pagination currentPage={page} totalPages={totalPages} onPageChange={handlePageChange} />
       </WhiteBackground>
     </>
   );

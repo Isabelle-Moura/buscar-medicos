@@ -8,7 +8,7 @@ import { TableHTMLAttributes } from 'react'
 interface Props extends TableHTMLAttributes<HTMLTableElement> {
   tHead: string[]
   tBody: TableRow[]
-  onUserClick?: (id: number) => void
+  onUserClick?: (user: any) => void 
 }
 
 // ---
@@ -26,7 +26,7 @@ const TableComponent = ({ tHead, tBody, onUserClick }: Props) => {
         </thead>
         <tbody>
           {tBody.map((info, index) => (
-            <tr key={`${index} - tr`} onClick={() => onUserClick && onUserClick(info.id)}>
+            <tr key={`${index} - tr`} onClick={onUserClick ? () => onUserClick(info) : undefined}>
               {Object.entries(info).map(([key, cell], cellIndex) => key !== 'id' && <td key={`${index}-${cellIndex}`}>{cell}</td>)}
             </tr>
           ))}
@@ -35,5 +35,6 @@ const TableComponent = ({ tHead, tBody, onUserClick }: Props) => {
     </>
   )
 }
+
 
 export default TableComponent

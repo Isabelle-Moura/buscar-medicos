@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TableComponent from '../table-layout';
 import { getRegisterUsers } from '../../../services/users-service/config';
+import Pagination from '../../extras-components/pagination'; // Importe o componente de paginação
 
 interface Props {
   selectedCategory: string;
@@ -9,18 +10,20 @@ interface Props {
 
 const TableRegisterUsers = ({ selectedCategory }: Props) => {
   const tHeadContent = ['Usuário', 'E-mail', 'Whatsapp', 'Especialidade', 'Cidade', 'Estado', 'Tipo de Usuário'];
+
   const [allUserData, setAllUserData] = useState<RegisteredUserAPI[]>([]);
+  const [currentPage, setCurrentPage] = useState(0); // Estado da página atual
+  const [totalPages, setTotalPages] = useState(0); // Estado do número total de páginas
+
   const navigate = useNavigate();
 
-  const generateHyphens = (text: string) => '-'.repeat(text.length);
-
-  const handleUserClick = () => {
-    navigate(`/dados-do-usuario`, { state: allUserData });
+  const handleUserClick = (user: RegisteredUserData) => {
+    navigate(`/dados-do-usuario`, { state: { user } });
   }
 
   useEffect(() => {
     const getAllUsers = async () => {
-      const usersData = await getRegisterUsers(0); // Ajuste a página conforme necessário
+      const usersData = await getRegisterUsers(currentPage); // Passe a página atual para a função de busca
 
       if (usersData?.content) {
         const usersFormatted = usersData?.content.reduce((acc: any, crr: any) => {
@@ -29,22 +32,33 @@ const TableRegisterUsers = ({ selectedCategory }: Props) => {
             user: `${crr.firstName + ' ' + crr.lastName}`,
             email: crr.email,
             whatsapp: crr.phone,
-            speciality: crr.specialties.name || generateHyphens('Especialidade'),
-            city: crr.address || generateHyphens('Cidade'),
-            state: crr.address || generateHyphens('Estado'),
-            userType: crr.profiles.length > 0 ? crr.profiles[0].name : generateHyphens('Tipo de Usuário')
+            speciality: crr.specialties.name || "-",
+            city: crr.address || "-",
+            state: crr.address || "-",
+            userType: crr.profiles.length > 0 ? crr.profiles[0].name : "-"
           };
           return [...acc, data];
         }, [] as RegisteredUserAPI[]);
 
         setAllUserData(usersFormatted);
+
+        // Atualize o número total de páginas
+        setTotalPages(usersData.totalPages);
       }
     }
     getAllUsers();
-  }, [selectedCategory]);
+  }, [selectedCategory, currentPage]);
+
+  // Função de mudança de página
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+  }
 
   return (
-    <TableComponent tHead={tHeadContent} tBody={allUserData} onUserClick={handleUserClick} />
+    <>
+      <TableComponent tHead={tHeadContent} tBody={allUserData} onUserClick={handleUserClick} />
+      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+    </>
   )
 }
 

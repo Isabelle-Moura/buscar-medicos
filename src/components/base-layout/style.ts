@@ -5,6 +5,9 @@ export const Main = styled.main`
   width: 100%;
   height: 100%;
   margin-top: 15px;
+  display: flex;
+  flex-grow: 2;
+  flex-direction: column;
 `
 
 export const HeaderAndNavWrapper = styled.div`

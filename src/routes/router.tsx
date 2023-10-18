@@ -14,6 +14,7 @@ import NotificationPage from '../pages/notification'
 import NewNotificationPage from '../pages/notification/new-notification-page'
 import FAQPage from '../pages/faq'
 import NewQuestionPage from '../pages/faq/new-question-page'
+import VisualizePlanPage from '../pages/plans/visualize-plan-page'
 
 // ---
 
@@ -28,6 +29,7 @@ export default function Router() {
            <Route path='/dados-do-usuario' element={<UserDataPage/>} />
            <Route path='/planos' element={<PlansPage/>} />
            <Route path='/novo-plano' element={<NewPlanPage/>} />
+           <Route path='/visualizar-plano' element={<VisualizePlanPage/>} />
            <Route path='/especialidades' element={<SpecialitiesPage/>} />
            <Route path='/nova-especialidade' element={<NewSpecialtyPage />} />
            <Route path='/notificacoes' element={<NotificationPage />} />

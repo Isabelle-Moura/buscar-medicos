@@ -58,9 +58,9 @@ export const updatePlan = async (planId: number, planData: PlanData) => {
   }
 }
 
-export const deletePlan = async () => {
+export const deletePlan = async (itemId: number) => {
   try {
-    const response = await api.delete(`/plans`, {
+    const response = await api.delete(`/plans/${itemId}`, {
       headers: { Authorization: token }
     })
     return response.data.content

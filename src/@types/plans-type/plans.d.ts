@@ -1,5 +1,6 @@
 type PlansAPI = {
     content: {
+      id: number
       planTitle: string
       period: string
       values: number | string
@@ -15,5 +16,6 @@ type PlansAPI = {
     planTitle: string
     enabled: boolean
     period: string
+    type: string
     values: number | string
   }
