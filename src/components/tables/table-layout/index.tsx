@@ -8,7 +8,7 @@ import { TableHTMLAttributes } from 'react'
 interface Props extends TableHTMLAttributes<HTMLTableElement> {
   tHead: string[]
   tBody: TableRow[]
-  onUserClick?: (id: number) => void | undefined
+  onUserClick?: (id: number) => void
 }
 
 // ---

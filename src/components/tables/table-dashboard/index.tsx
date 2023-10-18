@@ -22,7 +22,6 @@ const TableDashboard = () => {
         const userData = await getLastUsers()
         if (userData) {
           setUserData(userData.content)
-          console.log(userData.content)
 
           let dataInfo: any = []
           userData.content.map((item: any) => {

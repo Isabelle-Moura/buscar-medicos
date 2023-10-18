@@ -1,61 +1,33 @@
-import { useState, useEffect } from 'react';
-
-interface PaginationProps<T> {
-  items: T[];
-  itemsPerPage: number;
-  renderItem: (item: T, index: number) => React.ReactNode;
+// Component Type
+interface PaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
 }
 
-const Pagination = <T extends any>({
-  items,
-  itemsPerPage,
-  renderItem,
-}: PaginationProps<T>) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [displayedItems, setDisplayedItems] = useState<T[]>([]);
+// Style
+import * as S from './style'
 
-  useEffect(() => {
-    setTotalPages(Math.ceil(items.length / itemsPerPage));
-  }, [items, itemsPerPage]);
+// ---
 
-  useEffect(() => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    setDisplayedItems(items.slice(startIndex, endIndex));
-  }, [items, itemsPerPage, currentPage]);
-
-  const handlePageChange = (newPage: number) => {
-    setCurrentPage(newPage);
-  };
+const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) => {
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
     <>
-    <div>
-      <ul>
-        {displayedItems.map((item, index) => (
-          <li key={index}>{renderItem(item, index)}</li>
-        ))}
-      </ul>
-
-      <div>
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
+     <S.PaginationContainer>
+      {pages.map((page) => (
+        <S.PageButton
+          key={page}
+          onClick={() => onPageChange(page)}
+          className={page === currentPage ? 'active' : ''}
         >
-          Anterior
-        </button>
-        <span>Página {currentPage} de {totalPages}</span>
-        <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          Próxima
-        </button>
-      </div>
-    </div>
-    </>
+          {page}
+        </S.PageButton>
+      ))}
+     </S.PaginationContainer>
+     </>
   );
 };
 
-export default Pagination
+export default Pagination;

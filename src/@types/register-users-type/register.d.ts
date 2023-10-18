@@ -8,3 +8,38 @@ interface RegisteredUserData {
     state: string
     userType: string
   }
+
+interface RegisteredUserAPI {
+  content: [
+    {
+      id: number,
+      email: string,
+      firstName: string,
+      lastName: string,
+      profiles: [
+        {
+          id: number,
+          name: string
+        }
+      ],
+      specialties: [
+        {
+          id: number,
+          name: string,
+          enabled: boolean
+        }
+      ],
+      phone: string,
+      address: {
+        zipcode: string,
+        street: string,
+        number: string,
+        neighborhood: string,
+        city: string,
+        state: string,
+        complement: string
+      },
+      enabled: boolean
+    }
+  ],
+}

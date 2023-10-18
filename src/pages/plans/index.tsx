@@ -41,6 +41,10 @@ const PlansPage = () => {
     getData()
   }, [selectedCategory])
 
+  const handleCreateNewPlan = () => {
+    navigate('/novo-plano', { state: { tipo: selectedCategory } });
+  }
+
   return (
     <>
       <div>
@@ -56,7 +60,7 @@ const PlansPage = () => {
               <FilterButton />
             </div>
             <div style={{ margin: '10px 0px 10px 37.5vw'}} >
-              <MidButton variant="DEFAULT" name="Novo Plano" onClick={() => navigate('/novo-plano')} showIcon={true} />              
+              <MidButton variant="DEFAULT" name="Novo Plano" onClick={handleCreateNewPlan} showIcon={true} />              
             </div>
         </div>
           <TablePlans selectedCategory={selectedCategory} />

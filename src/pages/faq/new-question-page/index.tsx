@@ -15,10 +15,10 @@ const NewQuestionPage = () => {
       <WhiteBackground>
         <ContentTitle title="Dados da pergunta" />
         <div style={{ display: 'flex', marginLeft: '10px' }}>
-          <Input id="notification-title" placeholder="" label="Título" />
+          <Input id="notification-title" placeholder="Insira o título da sua pergunta." label="Título" />
         </div>
         <div style={{ marginLeft: '10px' }}>
-          <TextArea id="message" label="Mensagem" width="large" />
+          <TextArea id="message" label="Mensagem" width="large" placeholder="Insira a resposta da sua pergunta."/>
         </div>
         <div style={{ margin: '10px', alignItems: 'center', justifyContent: 'center' }}>
           <LargeButton name="Salvar" type="submit" variant="DEFAULT" />

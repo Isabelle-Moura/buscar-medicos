@@ -1,6 +1,6 @@
 // Hooks
 import { useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 // Service
 import { createPlan } from '../../../services/plans-service/config'
@@ -21,7 +21,9 @@ import ContentTitle from '../../../components/titles/content-title'
 // ---
 
 const NewPlanPage = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const location = useLocation();
+  const tipo = location.state?.tipo || 'contratante';
 
   const [planData, setPlanData] = useState({
     planTitle: '',
@@ -44,9 +46,9 @@ const NewPlanPage = () => {
 
   return (
     <>
-      <BackToPageButton link="/planos" name="Novo plano - contratante" />
+      <BackToPageButton link="/planos" name="Novo plano" />
       <WhiteBackground>
-        <ContentTitle title={'Novo plano - contratante'} />
+        <ContentTitle title={`Novo plano - ${tipo}`} />
         <S.InputSwitchSelectWrapper>
           <Input
             id="plan-title"

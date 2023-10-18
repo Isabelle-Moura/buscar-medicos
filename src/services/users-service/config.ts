@@ -1,11 +1,16 @@
+// import { AxiosResponse } from 'axios'
 import api from '../api'
 
 const token = localStorage.getItem('token')
 
-export const getRegisterUsers = async () => {
+export const getRegisterUsers = async (page: number) => {
   try {
-    const users = await api.get(`/users?page=0&size=5`, {
-      headers: { Authorization: token }
+    const users = await api.get(`/users`, {
+      headers: { Authorization: token },
+      params: {
+      page,
+      size: 6
+      }
     })
     return users.data
   } catch (error) {
