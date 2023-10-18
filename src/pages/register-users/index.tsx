@@ -17,7 +17,10 @@ import Pagination from '../../components/extras-components/pagination'
 const RegisterUsersPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<'Todos' | 'Médicos' | 'Contratantes'>('Todos');
 
-  const [allUsers, setAllUsers] = useState(0)
+  const [allUsers, setAllUsers] = useState<RegisteredUserData[]>([]);
+  console.log(allUsers)
+
+  const [totalUsers, setTotalUsers] = useState(0);
   const [allDoctors, setAllDoctors] = useState(0);
   const [allContractors, setAllContractors] = useState(0);
 
@@ -36,7 +39,7 @@ const RegisterUsersPage = () => {
     const counterAllUsers = async () => {
       const allUsersData = await getCounterTotalUsers();
       if (allUsersData) {
-        setAllUsers(allUsersData.total);
+        setTotalUsers(allUsersData.total);
         setAllDoctors(allUsersData.totalDoctors);
         setAllContractors(allUsersData.totalContractor);
       }
@@ -58,13 +61,13 @@ const RegisterUsersPage = () => {
     <>
       <PageTitle title="Usuários Cadastrados |" category={selectedCategory} />
       <div style={{ display: 'flex', marginLeft: '15px' }}>
-        <Category name="Todos" total={allUsers} onCategoryChange={() => handleCategoryChange('Todos')} />
+        <Category name="Todos" total={totalUsers} onCategoryChange={() => handleCategoryChange('Todos')} />
         <Category name="Contratantes" total={allContractors} onCategoryChange={() => handleCategoryChange('Contratantes')} />
         <Category name="Médicos" total={allDoctors} onCategoryChange={() => handleCategoryChange('Médicos')} />
       </div>
       <WhiteBackground>
         <SearchAndTotal
-          counter={selectedCategory === 'Todos' ? allUsers : selectedCategory === 'Contratantes' ? allContractors : selectedCategory === 'Médicos' ? allDoctors : 0}
+          counter={selectedCategory === 'Todos' ? totalUsers : selectedCategory === 'Contratantes' ? allContractors : selectedCategory === 'Médicos' ? allDoctors : 0}
         />
         <TableRegisterUsers selectedCategory={selectedCategory}/>
 

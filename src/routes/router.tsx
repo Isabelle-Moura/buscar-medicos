@@ -25,7 +25,7 @@ export default function Router() {
         <Route element={<BaseLayout/>}>
            <Route path='/dashboard' element={<DashboardPage/>} />
            <Route path='/usuarios-cadastrados' element={<RegisterUsersPage/>} />
-           <Route path='/dados-do-usuario/:id' element={<UserDataPage/>} />
+           <Route path='/dados-do-usuario' element={<UserDataPage/>} />
            <Route path='/planos' element={<PlansPage/>} />
            <Route path='/novo-plano' element={<NewPlanPage/>} />
            <Route path='/especialidades' element={<SpecialitiesPage/>} />
