@@ -5,7 +5,7 @@
 👉 Before we start our documentation, I would like to dedicate this whole project to:
 
 - **God, Jesus, and Blessed Mary**.
-- To my beautiful and wonderful family: **Mom, Nana, Jessie, Grandpa, and Grandma**. I love you guys so badly!
+- My beautiful and wonderful family: **Mom, Nana, Jessie, Grandpa, and Grandma**. I love you guys so badly!
 - And, last but not least, to all of my amazing teachers: **Prof. Alberto Timóteo, Prof. Lucas Ferreira, and Prof. Marcos Azevedo (Marcão)**,
 
 ### Without you guys, this wouldn't be possible. Thank you 💖💖💖!!!
@@ -74,12 +74,12 @@ The profile section allows users to:
 - Perform CRUD operations to manage profiles.
 
 # Technologies Used
-- **Front-end**: Developed in React, an open-source JavaScript library widely recognized for its efficiency and scalability in user interface development.
+- **Front-end**: Developed in React, an open-source JavaScript library known for its efficiency and scalability in UI development.
 
-- **Programming Language**: We use TypeScript, a language that adds static typing to JavaScript, providing greater security and productivity to the code.
+- **Programming Language**: Was used TypeScript, a language that adds static typing to JavaScript, providing greater security and productivity to the code.
 
-- **Styling**: The attractive and responsive interface is crafted with Styled-Components, a library that allows component styling with the flexibility of CSS-in-JS.
+- **Styling**: The whol interface is crafted with Styled-Components, a library that allows component styling with the flexibility of CSS-in-JS.
 
 ## Backend
 
-The project's API was developed by a team of former students from the course.
+The project's API was developed by a team of former students from the course. They are awesome, by the way.
