@@ -1,10 +1,16 @@
+// Style
 import * as S from './style'
+
+// Special Type
 import { ReactNode } from 'react';
 
+// Component Type
 interface Props {
   children: ReactNode
   onClose:  () => void
 }
+
+// ---
 
 const Modal = ({ onClose, children }: Props) => {
   return (

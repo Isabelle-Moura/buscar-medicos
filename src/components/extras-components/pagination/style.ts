@@ -21,6 +21,10 @@ export const ArrowsButton = styled.button`
   font-family: ${({theme}) => theme.fonts.poppins};
   outline: none;
   transition: background-color 0.2s, color 0.2s;
+
+  &:hover, :focus-within, :active {
+    background-color: ${({theme}) => theme.colors.lightGray};
+  }
 `
 
 export const PageButton = styled.button`

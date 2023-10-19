@@ -3,6 +3,7 @@ import api from '../api'
 
 const token = localStorage.getItem('token')
 
+// GET request
 export const getSpecialties = async () => {
     try {
       const response: AxiosResponse<SpecialtiesApi> = await api.get(`/specialties`, {
@@ -10,50 +11,54 @@ export const getSpecialties = async () => {
       })
       return response.data.content
     } catch (error) {
-      console.error('Ocorreu um erro na requisição de GET', error)
+      console.error(`There's an error with GET`, error)
+    }
+  }
+  
+// GET ID request
+export const getSpecialtyById = async (itemId: number) => {
+    try {
+      const response: AxiosResponse<SpecialtyData> = await api.get(`/specialties/${itemId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      return response.data
+    } catch (error) {
+      console.error(`There's an error with GET by id`, error)
     }
   }
 
-  // export const getSpecialties = async () => {
-  //   try {
-  //     const response = await fetch(`https://api.buscarmedicos.izap.dev/specialties`, {
-  //       method: 'GET',
-  //       headers: {
-  //         'Authorization': `Bearer ${token}`,
-  //       },
-  //       // mode: 'no-cors',
-  //     });
-  
-  //     if (response.ok) {
-  //       // Aqui você precisa analisar a resposta para o tipo correto
-  //       const data: SpecialtiesApi[] = await response.json();
-  //       return data;
-  //     } else {
-  //       console.error('Ocorreu um erro na requisição de GET');
-  //     }
-  //   } catch (error) {
-  //     console.error('Ocorreu um erro na requisição de GET', error);
-  //   }
-  // };
-
-export const createSpecialty = async () => {
+// POST request
+export const createSpecialty = async (specialtyData: SpecialtyData) => {
   try {
-    const response = await api.post(`/specialties`, {
+    const response = await api.post(`/specialties`, specialtyData, {
       headers: { Authorization: `Bearer ${token}` },  
     })
-    return response.data.content
+    return { success: true, message: response.data.message }
   } catch (error) {
-    console.error('Ocorreu um erro na requisição de POST', error)
+    console.error(`There's an error with POST`, error)
   }
 }
 
+// DELETE request
 export const deleteSpecialty = async (itemId: number) => {
   try {
     const response = await api.delete(`/specialties/${itemId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    return response.data.content
+    return { success: true, message: response.data.message}
   } catch (error) {
-    console.error('Ocorreu um erro na requisição de DELETE', error)
+    console.error(`There's an error with DELETE`, error)
+  }
+}
+
+// PUT request
+export const updateSpecialty = async (itemId: number, specialtyData: SpecialtyData) => {
+  try {
+    const response = await api.put(`/specialties/${itemId}`, specialtyData, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    return { success: true, message: response.data.message }
+  } catch (error) {
+    console.error(`There's an error with PUT`, error)
   }
 }

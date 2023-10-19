@@ -2,14 +2,14 @@ import styled from 'styled-components'
 
 export const ElipseImg = styled.img`
   width: 55%;
-  margin-top: 15px;
+  margin-top: 13px;
   margin-left: 175px;
   position: absolute;
 `
 
 export const WomanImg = styled.img`
   width: 42%;
-  margin-top: 10px;
+  margin-top: 8px;
   margin-left: 200px;
   position: absolute;
 `
@@ -17,8 +17,8 @@ export const WomanImg = styled.img`
 export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 32%;
-  margin-left: 3%;
+  margin-top: 34.2%;
+  margin-left: 3.9%;
 `
 
 export const GreenBackground = styled.div`
@@ -49,7 +49,7 @@ export const CallendarBackground = styled.div`
 export const Welcome = styled.h3`
   font-weight: ${({ theme }) => theme.fontWeight.bold};
   font-family: ${({ theme }) => theme.fonts.poppins};
-  font-size: ${({ theme }) => theme.fontSize.lg};
+  font-size: 22px;
   color: ${({ theme }) => theme.colors.secondWhite};
   margin: 4px 0px;
 `

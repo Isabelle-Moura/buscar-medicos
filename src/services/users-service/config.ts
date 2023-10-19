@@ -3,6 +3,7 @@ import api from '../api'
 
 const token = localStorage.getItem('token')
 
+// GET request
 export const getRegisterUsers = async (page: number) => {
   try {
     const users = await api.get(`/users`, {
@@ -18,6 +19,7 @@ export const getRegisterUsers = async (page: number) => {
   }
 }
 
+// GET COUNTER request
 export const getCounterTotalUsers = async () => {
   try {
     const totalAllUsers = await api.get(`/users/count`, {

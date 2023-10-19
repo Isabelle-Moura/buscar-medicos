@@ -1,3 +1,4 @@
+// Type for API
 interface QuestionAPI {
     content: [
         {
@@ -12,3 +13,5 @@ interface QuestionAPI {
         }
         ],
 }
+
+// Type for single information

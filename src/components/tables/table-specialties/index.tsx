@@ -2,7 +2,7 @@
 import { deleteSpecialty, getSpecialties } from "../../../services/specialties-service/config"
 
 //Hooks
-import { useEffect, useState } from "react"
+import { ReactNode, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 // Icons
@@ -19,13 +19,23 @@ import DeleteConfirmation from "../../modals/delete-confirmation"
 import CustomSwitch from "../../inputs/switch"
 import TableComponent from "../table-layout"
 
+// Component Type
+type SpecialtyTable = {
+  id: number
+  name: string
+  enabled: ReactNode
+  actions: ReactNode
+}
+
 // ---
 
 const TableSpecialties = () => {
-  const [specialties, setSpecialties] = useState<SpecialtyData[]>([])
+  const [specialties, setSpecialties] = useState<SpecialtyTable[]>([])
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [itemToDeleteId, setItemToDeleteId] = useState<number | null>(null);
-
+  
+  const navigate = useNavigate()
+  
   const handleRemoveClick = (itemId: number) => {
     setItemToDeleteId(itemId);
     setShowDeleteConfirmation(true);
@@ -34,8 +44,6 @@ const TableSpecialties = () => {
   const closeModal = () => {
     setShowDeleteConfirmation(false)
   }
-
-  const navigate = useNavigate()
 
   const tHeadContent = ["Nome especialidade", "Situação", "Ações"]
   
@@ -50,8 +58,8 @@ const TableSpecialties = () => {
                 enabled: <CustomSwitch checked={crr.enabled} label={crr.enabled ? ' Ativo' : ' Inativo'} />,
                 actions: (
                   <div style={{ display: 'flex' }}>
-                    <IconAndTooltipButton icon={VisualizeIcon} tooltip={VisualizeToolTip} hover="#EDEDED" />
-                    <IconAndTooltipButton icon={EditIcon} tooltip={EditToolTip} hover="#edf1fc" />
+                    <IconAndTooltipButton icon={VisualizeIcon} tooltip={VisualizeToolTip} hover="#EDEDED" onClick={() => navigate('/visualizar-especialidade', {state: {id: crr.id}})} />
+                    <IconAndTooltipButton icon={EditIcon} tooltip={EditToolTip} hover="#edf1fc" onClick={() => navigate('/editar-especialidade', {state: {id: crr.id}})}/>
                     <IconAndTooltipButton
                      icon={RemoveIcon}
                      tooltip={RemoveToolTip}

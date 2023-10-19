@@ -1,3 +1,4 @@
+// Type for for pagination in API
 type Pagination = {
     pageable: {
       pageNumber: number

@@ -18,14 +18,13 @@ interface InputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
 // ---
 
 const Input = ({ label, id, placeholder, isWrong, icon, onIcon, ...props }: InputProps) => {
-
   // Determinates CSS class based on the current state of input
   const classStyle = [props.value ? 'active' : '', isWrong && props.value === '' ? 'error' : '']
 
-  // Determintates input size based on size prop
+  // Determintates input size based on name inputed by dev
   const inputSize = {
-    width: 'large' ? '320px' : '150px'
-  }
+    width: 'large' === 'large' ? '320px' : '150px',
+  };
 
   return (
     <>

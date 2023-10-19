@@ -28,11 +28,13 @@ export const Container = styled.div`
 export const Close = styled.div`
   cursor: pointer;
   margin-left: 25vw;
-  margin-top: -60px;
+  margin-top: -5px;
+  font-size: 25px;
 `
 export const Message = styled.div`
   font-weight: 600;
   font-size: 30px;
   text-align: center;
-  max-width: 300px;
+  min-width: 300px;
+  padding: 10px;
 `

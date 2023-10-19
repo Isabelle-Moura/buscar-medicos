@@ -1,32 +1,37 @@
+// Hooks
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getPlanById } from '../../../services/plans-service/config'; // Importe a função para buscar o plano
 
+// Service
+import { getPlanById } from '../../../services/plans-service/config'; 
+
+// Components
 import WhiteBackground from '../../../components/extras-components/white-background';
 import BackToPageButton from '../../../components/buttons/back-to-page-button';
 import Input from '../../../components/inputs/input';
 import CustomSwitch from '../../../components/inputs/switch';
-import Select from '../../../components/inputs/select';
 import ContentTitle from '../../../components/titles/content-title';
 import IconAndTooltipButton from '../../../components/buttons/small-button-with-icon';
+
+// Icons
 import EditIcon from '../../../assets/icons/edit.png';
 import EditToolTip from '../../../assets/icons/editTooltip.png';
 import RemoveIcon from '../../../assets/icons/delete.png';
 import RemoveToolTip from '../../../assets/icons/removeTooltip.png';
 
+// ---
+
 const VisualizePlanPage = () => {
     const location = useLocation();
     const tipo = location.state?.tipo || 'contratante';
     const id = location.state?.id;
-
-    console.log('ID:', id)
   
     const [planData, setPlanData] = useState({
       planTitle: '',
       enabled: false,
       period: '',
       type: `${tipo}`,
-      values: '', // Inicialize como uma string
+      values: '', 
     });
   
     useEffect(() => {
@@ -36,8 +41,8 @@ const VisualizePlanPage = () => {
             const plan = await getPlanById(id);
             if (plan) {
               setPlanData({
-                ...plan, // Mantenha todos os outros campos do plano
-                values: plan.values.toString(), // Converta values para uma string
+                ...plan, 
+                values: plan.values.toString(), 
               });
             }
           } catch (error) {
@@ -60,15 +65,21 @@ const VisualizePlanPage = () => {
       </div>
       <WhiteBackground>
         <ContentTitle title='Dados do plano' />
-        <div>
-          <Input id="plan-title" placeholder='' defaultValue={planData.planTitle} label="Título do Plano" width="large" />
+        <div style={{marginLeft: '15px'}}>
           <div>
-            <CustomSwitch checked={planData.enabled} label={planData.enabled ? 'Ativo' : 'Inativo'} />
+            <div style={{display: 'flex', gap: '10px'}}>
+              <Input id="plan-title" placeholder='' defaultValue={planData.planTitle} label="Título do Plano" width="large" disabled/>
+              <div style={{marginTop: '35px'}}>
+                <CustomSwitch checked={planData.enabled} label={planData.enabled ? 'Ativo' : 'Inativo'} />
+              </div>
+            </div>
           </div>
-          <Select label="Período" id="period" options={['Mensal', 'Semanal', 'Trimestral']} defaultValue={planData.period} />
-        </div>
-        <div>
-          <Input label="Valor" id="value" placeholder='' defaultValue={planData.values}  />
+          <div style={{display: 'flex', gap: '10px'}}>
+            <Input label="Período" id="period" defaultValue={planData.period} placeholder='' disabled/>
+            <div>
+              <Input label="Valor" id="value" placeholder='' defaultValue={planData.values} disabled />
+            </div>
+          </div>
         </div>
       </WhiteBackground>
     </>

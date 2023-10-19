@@ -1,14 +1,4 @@
-interface RegisteredUserData {
-    id: number
-    user: string
-    email: string
-    whatsapp: string
-    speciality: string
-    city: string
-    state: string
-    userType: string
-  }
-
+// Type for API
 interface RegisteredUserAPI {
   content: [
     {
@@ -43,3 +33,15 @@ interface RegisteredUserAPI {
     }
   ],
 }
+
+// Type for single information
+interface RegisteredUserData {
+    id: number
+    user: string
+    email: string
+    whatsapp: string
+    speciality: string
+    city: string
+    state: string
+    userType: string
+  }

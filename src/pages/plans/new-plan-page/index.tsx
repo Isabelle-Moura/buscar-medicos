@@ -17,6 +17,7 @@ import Select from '../../../components/inputs/select'
 // Style
 import * as S from './style'
 import ContentTitle from '../../../components/titles/content-title'
+import ConfirmationPopUp from '../../../components/modals/saved-notification'
 
 // ---
 
@@ -25,27 +26,37 @@ const NewPlanPage = () => {
   const location = useLocation();
   const tipo = location.state?.tipo || 'contratante';
 
+  const [successNotification, setSuccessNotification] = useState(false);
+
   const [planData, setPlanData] = useState({
     planTitle: '',
     enabled: false,
     period: 'Mensal',
     type: `${tipo}`,
-    values: '', // Inicialize como um número
+    values: '', 
   });
+
+  const closeNotification = () => {
+    setSuccessNotification(false);
+  };
 
   const handleCreateButton = async (planData: PlanData) => {
     const values = typeof planData.values === 'string' ? parseFloat(planData.values) : planData.values;
-  
     const dataToSend = { ...planData, values };
-  
+    
     try {
-      await createPlan(dataToSend);
-      navigate('/planos');
+      const response = await createPlan(dataToSend);
+  
+      if (response?.success === true) {
+        setTimeout(() => {
+          setSuccessNotification(true);
+        }, 1000);
+      }
     } catch (error) {
-      console.error('Erro ao criar ou atualizar o plano: ', error);
+      console.error(`There's an error!: `, error);
     }
   };
-
+  
   return (
     <>
       <BackToPageButton link="/planos" name="Novo plano" />
@@ -66,13 +77,17 @@ const NewPlanPage = () => {
           <Select label="Período" id="period" options={['Mensal', 'Semanal', 'Trimestral']} onChange={e => setPlanData({ ...planData, period: e.target.value })} />
         </S.InputSwitchSelectWrapper>
         <S.InputMidButtonWrapper>
-          <Input label="Valor" id="value" placeholder="R$00,00" width="small" value={planData.values} onChange={e => setPlanData({ ...planData, values: e.target.value })} />
+          <Input label="Valor" id="value" placeholder="R$00,00" value={planData.values} onChange={e => setPlanData({ ...planData, values: e.target.value })} />
           <MidButton variant="DEFAULT" name="Adicionar Promoção" showIcon={true} />
         </S.InputMidButtonWrapper>
         <S.LargeButtonhWrapper>
           <LargeButton name="Salvar" type="submit" variant="DEFAULT" onClick={() => handleCreateButton(planData)} />
         </S.LargeButtonhWrapper>
       </WhiteBackground>
+      {successNotification && <ConfirmationPopUp message='Plano salvo com sucesso!' onClose={() => {
+      closeNotification();
+      navigate('/planos');
+    }} />}
     </>
   )
 }

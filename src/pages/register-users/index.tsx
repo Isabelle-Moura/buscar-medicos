@@ -6,7 +6,7 @@ import WhiteBackground from '../../components/extras-components/white-background
 
 // Service
 import { getCounterTotalUsers } from '../../services/users-service/config'
-// , getRegisterUsers
+
 // Hooks
 import { useEffect, useState } from 'react'
 import SearchAndTotal from '../../components/register-users-components/search-and-total'
@@ -15,8 +15,6 @@ import SearchAndTotal from '../../components/register-users-components/search-an
 
 const RegisterUsersPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<'Todos' | 'Médicos' | 'Contratantes'>('Todos');
-
-  // const [allUsers, setAllUsers] = useState<RegisteredUserData[]>([]);
 
   const [totalUsers, setTotalUsers] = useState(0);
   const [allDoctors, setAllDoctors] = useState(0);
@@ -36,13 +34,7 @@ const RegisterUsersPage = () => {
         setAllContractors(allUsersData.totalContractor);
       }
     };
-  
-  //   const getAllUsers = async () => {
-  //     const response = await getRegisterUsers();
-  //     setAllUsers(response.content); 
-  // };
-  
-  //   getAllUsers();
+
     counterAllUsers();
   }, [selectedCategory]);
 

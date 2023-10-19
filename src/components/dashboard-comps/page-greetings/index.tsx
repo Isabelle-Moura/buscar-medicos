@@ -1,7 +1,7 @@
 //Style
 import * as S from './style'
 
-//Icons and Images
+//Icons
 import WomanLaptop from '../../../assets/images/lady-with-glasses.png'
 import Elipse from '../../../assets/images/elipse-light-green.png'
 import CalendarIcon from '../../../assets/icons/calendar.png'
@@ -43,7 +43,7 @@ const Greetings = () => {
             <img src={CalendarIcon} style={{ marginRight: '6px' }} />
             <span>{currentDate}</span>
           </S.CallendarBackground>
-          <S.Welcome>Seja bem-vinda!</S.Welcome>
+          <S.Welcome>Seja bem-vindo(a)!</S.Welcome>
           <S.WelcomeSubtitle>
             Neste painel você poderá administrar <br />
             seu site de forma simples e prática.

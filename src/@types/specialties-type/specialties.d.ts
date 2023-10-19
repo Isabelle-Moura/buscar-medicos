@@ -1,3 +1,4 @@
+// Type for API
 interface SpecialtiesApi {
   content: {
     id: number;
@@ -6,8 +7,9 @@ interface SpecialtiesApi {
   }[]
 };
 
-type SpecialtyData = {
-  name: string
-  enabled: ReactNode
-  actions: ReactNode
+// Type for single information
+interface SpecialtyData {
+  id?: number;
+  name: string;
+  enabled: boolean;
 }

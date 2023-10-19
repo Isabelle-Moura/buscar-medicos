@@ -1,3 +1,4 @@
+// Icons
 import VisualizeIcon from '../../../assets/icons/visualize.png'
 import VisualizeToolTip from '../../../assets/icons/visualizeTooltip.png'
 import EditIcon from '../../../assets/icons/edit.png'
@@ -5,16 +6,20 @@ import EditToolTip from '../../../assets/icons/editTooltip.png'
 import RemoveIcon from '../../../assets/icons/delete.png'
 import RemoveToolTip from '../../../assets/icons/removeTooltip.png'
 
+// Hooks
 import { ReactNode, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
+// Services
 import { deletePlan, getPlans } from '../../../services/plans-service/config'
 
+// Components
 import TableComponent from '../table-layout'
 import CustomSwitch from '../../inputs/switch'
 import DeleteConfirmation from '../../modals/delete-confirmation'
 import IconAndTooltipButton from '../../buttons/small-button-with-icon'
-import { useNavigate } from 'react-router-dom'
 
+// Component Type
 interface PlansData {
   id: number
   period: string
@@ -26,6 +31,8 @@ interface PlansData {
 interface Props {
   selectedCategory: string
 }
+
+// ---
 
 const TablePlans = ({ selectedCategory }: Props) => {
   const [allPlans, setAllPlans] = useState<PlansData[]>([]);
@@ -52,7 +59,6 @@ const TablePlans = ({ selectedCategory }: Props) => {
 
       if (plans) {
         plansFormatted = plans?.reduce((acc, crr) => {
-          console.log('ID do plano:', crr.id);
           const plan: PlansData = {
             id: crr.id,
             period: crr.period.toUpperCase(),
@@ -61,7 +67,7 @@ const TablePlans = ({ selectedCategory }: Props) => {
             actions: (
               <div style={{ display: 'flex' }}>
                 <IconAndTooltipButton icon={VisualizeIcon} tooltip={VisualizeToolTip} hover="#EDEDED" onClick={() => navigate('/visualizar-plano', {state: {id: crr.id}})} />
-                <IconAndTooltipButton icon={EditIcon} tooltip={EditToolTip} hover="#edf1fc" />
+                <IconAndTooltipButton icon={EditIcon} tooltip={EditToolTip} hover="#edf1fc" onClick={() => navigate('/editar-plano', {state: {id: crr.id}})}/>
                 <IconAndTooltipButton
                   icon={RemoveIcon}
                   tooltip={RemoveToolTip}

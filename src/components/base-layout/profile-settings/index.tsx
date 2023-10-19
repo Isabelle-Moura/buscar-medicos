@@ -1,7 +1,12 @@
+// Style
+import * as S from './style'
+
+// Icons
 import UserProfileIcon from '../../../assets/icons/user-settings.png'
 import LogOutIcon from '../../../assets/icons/logout.png'
 import UserBackground from '../../../assets/icons/login-options-background.png'
-import * as S from './style'
+
+// ---
 
 const UserSettings = () => {
   return (

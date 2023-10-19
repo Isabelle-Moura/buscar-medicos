@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios';
 import api from '../api';
 
+// POST request to check if input data matches to user's actual email and password 
 export const LoginService = async (email: string, password: string) => {
   console.log(email, password);
   try {
@@ -8,7 +9,7 @@ export const LoginService = async (email: string, password: string) => {
 
     console.log('Login API Response:', userData.data);
 
-    const { token } = userData.data; // Acessar o token diretamente
+    const { token } = userData.data; 
     
     localStorage.setItem('token', token);
     api.defaults.headers.Authorization = token;
@@ -21,6 +22,7 @@ export const LoginService = async (email: string, password: string) => {
 
 const token = localStorage.getItem('token')
 
+// GET to fetch and set to localStorage all user data (logged user, of course)
 export const UserMe = async () => {
   try {
     const userMeData: AxiosResponse<UserMeApi> = await api.get(`/me`, {

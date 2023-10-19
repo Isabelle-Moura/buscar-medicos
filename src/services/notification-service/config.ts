@@ -3,6 +3,7 @@ import api from '../api'
 
 const token = localStorage.getItem('token')
 
+// GET request
 export const getNotifications = async (type: string) => {
     try {
       const response: AxiosResponse<NotificationAPI> = await api.get(`/notifications?type=${type}`, {
@@ -13,3 +14,8 @@ export const getNotifications = async (type: string) => {
       console.error('Ocorreu um erro na requisição de GET', error)
     }
   }
+// POST request
+// GET COUNTER request
+// GET ID request
+// PUT request
+// DELETE request

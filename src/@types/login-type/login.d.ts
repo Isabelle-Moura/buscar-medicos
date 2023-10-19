@@ -1,7 +1,9 @@
+// Type for API
 interface LoginApi {
     token: string
   }
 
+  // Type for API
 interface UserMeApi {
     id: number;
     email: string;
@@ -14,3 +16,5 @@ interface UserMeApi {
     }[];
     enabled: boolean;
   }
+
+// Type for single information

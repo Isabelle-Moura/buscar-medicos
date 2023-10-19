@@ -1,5 +1,6 @@
 import api from '../api'
 
+// GET Totals for Card Counter
 export const counterDashboard = async () => {
   try {
     const token = localStorage.getItem('token')
@@ -8,10 +9,11 @@ export const counterDashboard = async () => {
     })
     return counterDashboard.data
   } catch (error) {
-    console.error('Ocorreu um erro!', error)
+    console.error(`There's an error!`, error)
   }
 }
 
+// GET Last Three Users
 export const getLastUsers = async () => {
   try {
     const token = localStorage.getItem('token')
@@ -20,7 +22,7 @@ export const getLastUsers = async () => {
     })
     return usersDashboard.data
   } catch (error) {
-    console.error('Ocorreu um erro!', error)
+    console.error(`There's an error!`, error)
   }
 }
 
@@ -36,6 +38,6 @@ export const Callendar = () => {
     return formattedDate;
   } catch (error) {
     console.error('Something went wrong:', error);
-    return 'Erro ao obter a data';
+    return 'Error in date GET';
   }
 }

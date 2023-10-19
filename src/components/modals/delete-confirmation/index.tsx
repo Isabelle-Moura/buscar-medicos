@@ -8,7 +8,7 @@ import * as S from './style'
 interface Props {
   onCancel: () => void;
   onClose:  () => void
-  onConfirm: (itemId: number | null) => Promise<void>; // Modifique a assinatura
+  onConfirm: (itemId: number | null) => Promise<void>;
   itemId: number | null;
 }
 

@@ -1,12 +1,20 @@
+// Hooks
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import TableComponent from '../table-layout';
-import { getRegisterUsers } from '../../../services/users-service/config';
-import Pagination from '../../extras-components/pagination'; // Importe o componente de paginação
 
+// Components
+import TableComponent from '../table-layout';
+import Pagination from '../../extras-components/pagination';
+
+// Service
+import { getRegisterUsers } from '../../../services/users-service/config';
+
+// Component Type
 interface Props {
   selectedCategory: string;
 }
+
+// ---
 
 const TableRegisterUsers = ({ selectedCategory }: Props) => {
   const tHeadContent = ['Usuário', 'E-mail', 'Whatsapp', 'Especialidade', 'Cidade', 'Estado', 'Tipo de Usuário'];

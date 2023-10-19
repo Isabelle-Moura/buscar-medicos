@@ -1,3 +1,4 @@
+// Type for single information
 interface UserData {
     firstName: string
     lastName: string

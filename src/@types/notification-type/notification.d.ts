@@ -1,3 +1,4 @@
+// Type for API
 interface NotificationAPI {
     content: [
     {
@@ -13,3 +14,5 @@ interface NotificationAPI {
     }
     ],
 }
+
+// Type for single information

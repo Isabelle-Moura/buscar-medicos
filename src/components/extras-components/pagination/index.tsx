@@ -1,14 +1,18 @@
-// Pagination.js
-
+// Style
 import * as S from './style';
+
+// Icons
 import leftArrow from '../../../assets/icons/chevron left.png';
 import rightArrow from '../../../assets/icons/chevron right.png';
 
+// Component Type
 interface PaginationProps {
   totalPages: number;
   currentPage: number;
   onPageChange: (page: number) => void;
 }
+
+// ---
 
 const Pagination = ({ totalPages, currentPage, onPageChange }: PaginationProps) => {
   const handlePageChange = (newPage: number) => {

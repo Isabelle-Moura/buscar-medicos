@@ -1,3 +1,4 @@
+// Type for API
 type PlansAPI = {
     content: {
       id: number
@@ -11,6 +12,7 @@ type PlansAPI = {
     numberOfElements: number
   }
   
+// Type for single information
   interface PlanData {
     id?: number
     planTitle: string

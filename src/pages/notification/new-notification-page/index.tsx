@@ -8,16 +8,21 @@ import Input from "../../../components/inputs/input"
 import TextArea from "../../../components/inputs/text-area"
 import Modal from "../../../components/modals/modal"
 import ConfirmationPopUp from "../../../components/modals/saved-notification"
-import { ContentTitle } from "../../dashboard/style"
 
 //Style
 import * as S from './style'
+import { ContentTitle } from "../../dashboard/style"
+
+// Hooks
+import { useNavigate } from "react-router-dom"
 
 // --- 
 
 const NewNotificationPage = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [notificOpen, setNotificOpen] = useState(false);
+
+  const navigate = useNavigate()
 
   const openModal = () => {
     setModalOpen(true);
@@ -38,6 +43,7 @@ const NewNotificationPage = () => {
   const closeModalAndNotification = () => {
     closeNotification();
     closeModal();
+    navigate("/notificacoes")
   };
 
   return (
