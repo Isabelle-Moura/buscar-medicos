@@ -5,7 +5,7 @@ const token = localStorage.getItem('token')
 
 export const getSpecialties = async () => {
     try {
-      const response: AxiosResponse<SpecialtiesApi> = await api.get(`/specialties`, {
+      const response: AxiosResponse<SpecialtiesApi> = await api.get(`/specialties}`, {
         headers: { Authorization: token }
       })
       return response.data.content
@@ -25,4 +25,13 @@ export const createSpecialty = async () => {
   }
 }
 
-
+export const deleteSpecialty = async (itemId: number) => {
+  try {
+    const response = await api.delete(`/specialties/${itemId}`, {
+      headers: { Authorization: token }
+    })
+    return response.data.content
+  } catch (error) {
+    console.error('Ocorreu um erro na requisição de DELETE', error)
+  }
+}

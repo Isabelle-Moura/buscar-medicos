@@ -1,5 +1,5 @@
 // Service
-import { getSpecialties } from "../../../services/specialties-service/config"
+import { deleteSpecialty, getSpecialties } from "../../../services/specialties-service/config"
 
 //Hooks
 import { useEffect, useState } from "react"
@@ -23,10 +23,16 @@ import TableComponent from "../table-layout"
 
 const TableSpecialties = () => {
   const [specialties, setSpecialties] = useState<SpecialtyData[]>([])
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [itemToDeleteId, setItemToDeleteId] = useState<number | null>(null);
 
-  const handleDeleteClick = () => {
-    setShowDeleteConfirmation(true)
+  const handleRemoveClick = (itemId: number) => {
+    setItemToDeleteId(itemId);
+    setShowDeleteConfirmation(true);
+  };
+
+  const closeModal = () => {
+    setShowDeleteConfirmation(false)
   }
 
   const navigate = useNavigate()
@@ -39,21 +45,19 @@ const TableSpecialties = () => {
           const specialtiesFormatted = result?.reduce(
             (acc, crr) => {
               const specialty = {
+                id: crr.id,
                 name: crr.name,
                 enabled: <CustomSwitch checked={crr.enabled} label={crr.enabled ? ' Ativo' : ' Inativo'} />,
                 actions: (
                   <div style={{ display: 'flex' }}>
                     <IconAndTooltipButton icon={VisualizeIcon} tooltip={VisualizeToolTip} hover="#EDEDED" />
                     <IconAndTooltipButton icon={EditIcon} tooltip={EditToolTip} hover="#edf1fc" />
-                    <IconAndTooltipButton icon={RemoveIcon} tooltip={RemoveToolTip} hover="#ffe1e1" onClick={handleDeleteClick} />
-                    {showDeleteConfirmation && (
-                        <DeleteConfirmation
-                          onCancel={() => setShowDeleteConfirmation(false)}
-                          onConfirm={() => {
-                            setShowDeleteConfirmation(false)
-                    }}
+                    <IconAndTooltipButton
+                     icon={RemoveIcon}
+                     tooltip={RemoveToolTip}
+                     hover="#ffe1e1"
+                    onClick={() => handleRemoveClick(crr.id)}
                   />
-                )}
                   </div>
                 ),
               }
@@ -70,6 +74,30 @@ const TableSpecialties = () => {
       return (
         <>
           <TableComponent tHead={tHeadContent} tBody={specialties} />
+          {showDeleteConfirmation && (
+          <DeleteConfirmation
+            onClose={closeModal}
+            onCancel={() => {
+              setShowDeleteConfirmation(false);
+              setItemToDeleteId(null);
+            }}
+            onConfirm={async (itemId) => {
+              try {
+                if (itemId !== null) {
+                  await deleteSpecialty(itemId);
+                  getSpecialties();
+                  window.location.reload()
+                }
+              } catch (error) {
+                console.error('Erro ao excluir a especialidade', error);
+              } finally {
+                setShowDeleteConfirmation(false);
+                setItemToDeleteId(null);
+              }
+            }}
+            itemId={itemToDeleteId}
+          />
+      )}
         </>
       )
     }

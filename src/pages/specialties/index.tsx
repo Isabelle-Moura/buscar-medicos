@@ -24,7 +24,7 @@ const SpecialitiesPage = () => {
               <SearchInput />
               <FilterButton />
             </div>
-            <div style={{ margin: '10px 0px 10px 37.5vw'}} >
+            <div style={{ margin: '10px 0px 10px 38.5vw'}} >
                <MidButton variant="DEFAULT" name="Nova Especialidade" onClick={() => navigate('/nova-especialidade')} showIcon={true} />
             </div>
         </div>
