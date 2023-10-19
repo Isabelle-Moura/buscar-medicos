@@ -11,5 +11,5 @@ export const Background = styled.div`
   border-radius: 20px;
   margin: -5px 18px 0px 18px;
   padding: 2px;
-  padding: 12px 10px;
+  padding: 12px 8px;
 `

@@ -43,7 +43,7 @@ const TableSpecialties = () => {
         const fetchSpecialties = async () => {
           const result = await getSpecialties()
           const specialtiesFormatted = result?.reduce(
-            (acc, crr) => {
+            (acc: any, crr: any) => {
               const specialty = {
                 id: crr.id,
                 name: crr.name,

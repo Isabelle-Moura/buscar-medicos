@@ -5,8 +5,8 @@ const token = localStorage.getItem('token')
 
 export const getSpecialties = async () => {
     try {
-      const response: AxiosResponse<SpecialtiesApi> = await api.get(`/specialties}`, {
-        headers: { Authorization: token }
+      const response: AxiosResponse<SpecialtiesApi> = await api.get(`/specialties`, {
+        headers: { Authorization: `Bearer ${token}` },
       })
       return response.data.content
     } catch (error) {
@@ -14,10 +14,32 @@ export const getSpecialties = async () => {
     }
   }
 
+  // export const getSpecialties = async () => {
+  //   try {
+  //     const response = await fetch(`https://api.buscarmedicos.izap.dev/specialties`, {
+  //       method: 'GET',
+  //       headers: {
+  //         'Authorization': `Bearer ${token}`,
+  //       },
+  //       // mode: 'no-cors',
+  //     });
+  
+  //     if (response.ok) {
+  //       // Aqui você precisa analisar a resposta para o tipo correto
+  //       const data: SpecialtiesApi[] = await response.json();
+  //       return data;
+  //     } else {
+  //       console.error('Ocorreu um erro na requisição de GET');
+  //     }
+  //   } catch (error) {
+  //     console.error('Ocorreu um erro na requisição de GET', error);
+  //   }
+  // };
+
 export const createSpecialty = async () => {
   try {
     const response = await api.post(`/specialties`, {
-      headers: { Authorization: token }
+      headers: { Authorization: `Bearer ${token}` },  
     })
     return response.data.content
   } catch (error) {
@@ -28,7 +50,7 @@ export const createSpecialty = async () => {
 export const deleteSpecialty = async (itemId: number) => {
   try {
     const response = await api.delete(`/specialties/${itemId}`, {
-      headers: { Authorization: token }
+      headers: { Authorization: `Bearer ${token}` },
     })
     return response.data.content
   } catch (error) {

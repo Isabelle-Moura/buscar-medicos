@@ -22,7 +22,7 @@ const Pagination = ({ totalPages, currentPage, onPageChange }: PaginationProps) 
     const maxButtons = 4;
     let startPage = currentPage - Math.floor(maxButtons / 2);
     if (startPage < 1) {
-      startPage = 0;
+      startPage = 1;
     }
     let endPage = startPage + maxButtons - 1;
     if (endPage > totalPages) {
@@ -50,14 +50,14 @@ const Pagination = ({ totalPages, currentPage, onPageChange }: PaginationProps) 
   return (
     <S.PaginationContainer>
       {currentPage >= 0 && (
-        <S.ArrowsButton onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 0}
+        <S.ArrowsButton onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1 - 1}
         style={{ cursor: currentPage === 0 ? 'not-allowed' : 'pointer' }}>
           <img src={leftArrow} alt="Seta Esquerda" />
         </S.ArrowsButton>
       )}
       {generatePageButtons()}
       {currentPage <= totalPages && (
-        <S.ArrowsButton onClick={() => handlePageChange(currentPage + 1)}  disabled={currentPage === 0}
+        <S.ArrowsButton onClick={() => handlePageChange(currentPage + 1)}  disabled={currentPage === totalPages - 1}
         style={{ cursor: currentPage === totalPages - 1 ? 'not-allowed' : 'pointer' }}>
           <img src={rightArrow} alt="Seta Direita" />
         </S.ArrowsButton>

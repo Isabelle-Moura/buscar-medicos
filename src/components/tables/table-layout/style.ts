@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Table = styled.table`
-  min-width: 99.5%;
+  min-width: 99%;
   margin: auto;
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-size: ${({ theme }) => theme.fontSize.xsm};

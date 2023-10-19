@@ -38,13 +38,7 @@ export const PageButton = styled.button`
   outline: none;
   transition: background-color 0.2s, color 0.2s;
 
-  &:hover {
-    font-weight: ${({theme}) => theme.fontWeight.bold};
-    background-color: ${({theme}) => theme.colors.defaultGreen};
-    color: ${({theme}) => theme.colors.white};
-  }
-  
-  &:focus-within {
+  &:hover, :focus-within, :active {
     font-weight: ${({theme}) => theme.fontWeight.bold};
     background-color: ${({theme}) => theme.colors.defaultGreen};
     color: ${({theme}) => theme.colors.white};

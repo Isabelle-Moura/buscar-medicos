@@ -1,10 +1,10 @@
-type SpecialtiesApi = Pagination & {
-    content: {
-      id: number
-      name: string
-      enabled: boolean
-    }[]
-}
+interface SpecialtiesApi {
+  content: {
+    id: number;
+    name: string;
+    enabled: boolean;
+  }[]
+};
 
 type SpecialtyData = {
   name: string
