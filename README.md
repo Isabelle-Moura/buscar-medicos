@@ -1,26 +1,28 @@
 # Buscar Médicos - Project Documentation
 
-## Special Thanks
+## 🙏 Special Thanks 
 
-👉 Before we start our documentation, I would like to dedicate this whole project to:
+👉 Before we start our documentation, *I would like to dedicate this entire project to*:
 
-- **God, Jesus, and Blessed Mary**.
+- **God, Jesus,** and **Blessed Mary**.
+  
 - My beautiful and wonderful family: **Mom, Nana, Jessie, Grandpa, and Grandma**. I love you guys so badly!
-- And, last but not least, to all of my amazing teachers: **Prof. Alberto Timóteo, Prof. Lucas Ferreira, and Prof. Marcos Azevedo (Marcão)**,
+  
+- And last but not least, to all of my amazing teachers: **Profº Alberto Timóteo, Profº Lucas Ferreira, and Profº Marcos Azevedo (Marcão)**,
 
-### Without you guys, this wouldn't be possible. Thank you 💖💖💖!!!
+### Without you guys, this wouldn't be possible. Thank you!!! 💖💖💖
 
-# Description
+#  Project Introduction 🚀
 
-**Buscar Médicos** is an innovative application designed to enhance the experience in the medical sector by optimizing the connection between doctors and medical service providers.
+***Buscar Médicos*** is an innovative application designed to enhance the experience in the medical sector, by optimizing the connection between doctors and medical service providers.
 
-The application encompasses a range of features, including a login system and six main screens: Dashboard, Registered Users, Plans, Specialties, Notifications, and FAQ.
+The application encompasses a range of features, including a login system and six main screens: **Dashboard, Registered Users, Plans, Specialties, Notifications, and FAQ**.
 
-## Login Screen
+## ◻ Login Screen
 
 The login screen allows users to authenticate themselves within the application. Upon successful login, users are directed to the main dashboard.
 
-## Dashboard
+## ◻ Dashboard
 
 In this screen, users can:
 
@@ -28,7 +30,7 @@ In this screen, users can:
 - Check the number of doctors and service providers on the platform.
 - Determine how many doctors and service providers are available or unavailable.
 
-## Registered Users
+## ◻ Registered Users
 
 In this screen, users can:
 
@@ -36,21 +38,21 @@ In this screen, users can:
 - Categorize users into doctors and service providers.
 - Click on a name in the table to access the complete user details.
 
-## Plans
+## ◻ Plans
 
 In this screen, users can:
 
 - Review available plans, including the period, status (active or inactive), and cost.
 - Perform CRUD operations (Create, Read, Update, Delete) to manage plans.
 
-## Specialties
+## ◻ Specialties
 
 In this screen, users can:
 
 - Review available medical specialties and their status (active or inactive).
 - Conduct CRUD operations to manage specialties.
 
-## Notifications
+## ◻ Notifications
 
 In this screen, users can:
 
@@ -58,14 +60,14 @@ In this screen, users can:
 - Send new notifications.
 - Perform CRUD operations to manage notifications.
 
-## FAQ
+## ◻ FAQ
 
 In this screen, users can:
 
 - Access a list of frequently asked questions.
 - Find essential information through questions and answers.
 
-## Profile
+## ◻ Profile
 
 The profile section allows users to:
 
