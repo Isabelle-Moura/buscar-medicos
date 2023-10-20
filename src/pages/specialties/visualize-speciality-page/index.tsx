@@ -3,12 +3,12 @@ import BackToPageButton from "../../../components/buttons/back-to-page-button"
 import WhiteBackground from "../../../components/extras-components/white-background"
 import Input from "../../../components/inputs/input"
 import CustomSwitch from "../../../components/inputs/switch"
+import ContentTitle from "../../../components/titles/content-title"
 
 // Service
 import { getSpecialtyById } from "../../../services/specialties-service/config"
 
 // Style
-import { ContentTitle } from "../../dashboard/style"
 import { StyledText } from "../../register-users/user-data-page/style"
 
 // Hooks
@@ -46,9 +46,9 @@ const VisualizeSpecialtyPage = () => {
 
   return (
     <>
-      <BackToPageButton link="/especialidades" name="Nova especialidade" />
+      <BackToPageButton link="/especialidades" name="Especialidades" />
       <WhiteBackground>
-        <ContentTitle title="Dados da especialidade" />
+        <ContentTitle title="Dados da Especialidade"/>
         <div style={{ display: 'flex', marginLeft: '10px', alignItems: 'center', justifyContent: 'center' }}>
           <Input id="speciality-title" placeholder="" defaultValue={specialtyData.name} label="Nome" width="large" disabled/>
           <div style={{margin: '10px'}}>

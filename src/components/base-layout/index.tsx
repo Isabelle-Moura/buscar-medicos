@@ -10,6 +10,7 @@ import { useState } from 'react'
 // Components
 import SideMenu from './side-menu'
 import Header from './header'
+import SideMenuSmall from './side-menu/side-menu-small'
 
 // ---
 
@@ -22,7 +23,8 @@ const BaseLayout = () => {
   return (
     <>
       <S.HeaderAndNavWrapper>
-        <SideMenu className={menuOpen ? 'open' : 'close'} toggleMenu={toggleMenu} />
+        {menuOpen ? <SideMenu /> : <SideMenuSmall/>}
+        {/* <SideMenu className={menuOpen ? } toggleMenu={toggleMenu} /> */}
 
         {/* Header and Main.  */}
         <S.UserAndMainWrapper>

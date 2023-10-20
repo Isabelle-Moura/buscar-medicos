@@ -11,11 +11,11 @@ import { useLocation, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 
 // Style
-import { ContentTitle } from "../../dashboard/style"
 import { StyledText } from "../../register-users/user-data-page/style"
 
 // Services
 import { getSpecialtyById, updateSpecialty } from "../../../services/specialties-service/config"
+import ContentTitle from "../../../components/titles/content-title"
 
 // ---
 
@@ -74,9 +74,9 @@ const EditSpecialtyPage = () => {
 
   return (
     <>
-      <BackToPageButton link="/especialidades" name="Nova especialidade" />
+      <BackToPageButton link="/especialidades" name="Especialidades" />
       <WhiteBackground>
-        <ContentTitle title="Dados da especialidade" />
+      <ContentTitle title='Editar Dados da Especialidade' />
         <div style={{ display: 'flex', marginLeft: '10px', alignItems: 'center', justifyContent: 'center' }}>
           <Input id="speciality-title" placeholder="" value={specialtyData.name} onChange={(e) => setSpecialtyData({ ...specialtyData, name: e.target.value })} label="Nome" width="large" />
           <div style={{margin: '10px'}}>
