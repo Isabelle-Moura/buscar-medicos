@@ -20,7 +20,7 @@ export const MenuItem = styled(Link)`
   font-size: ${({ theme }) => theme.fontSize.xsm};
   background-color: ${({ theme }) => theme.colors.defaultGreen};
   color: ${({ theme }) => theme.colors.white};
-  margin: 1px;
+  margin: 4px 7px;
   padding: 15px 23px;
   border-radius: 10px;
   text-decoration: none;

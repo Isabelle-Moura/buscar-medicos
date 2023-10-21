@@ -114,11 +114,9 @@ const EditPlanPage = () => {
                 onChange={(e) => setPlanData({ ...planData, values: e.target.value })}
             />
             <div style={{marginTop: '35px', marginRight: '60px'}}>
-             <CustomSwitch
-               checked={planData.enabled}
-               onChange={(newValue) => setPlanData({ ...planData, enabled: newValue })}
-               label={planData.enabled ? 'Ativo' : 'Inativo'}
-              />
+              <CustomSwitch checked={planData.enabled} onClick={() => {
+              setPlanData({ ...planData, enabled: !planData.enabled });
+              }} label={planData.enabled ? 'Ativo' : 'Inativo'} />
             </div>
          </div>
             <div style={{ marginTop: '20px' }}>

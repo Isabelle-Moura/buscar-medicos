@@ -1,5 +1,5 @@
 // Hooks
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Components
@@ -7,7 +7,8 @@ import TableComponent from '../table-layout';
 import Pagination from '../../extras-components/pagination';
 
 // Service
-import { getRegisterUsers } from '../../../services/users-service/config';
+import { getRegisterUsers, getUsersByType } from '../../../services/users-service/config';
+// import SearchBar from '../../inputs/search-bar';
 
 // Component Type
 interface Props {
@@ -20,19 +21,28 @@ const TableRegisterUsers = ({ selectedCategory }: Props) => {
   const tHeadContent = ['Usuário', 'E-mail', 'Whatsapp', 'Especialidade', 'Cidade', 'Estado', 'Tipo de Usuário'];
 
   const [allUserData, setAllUserData] = useState<RegisteredUserAPI[]>([]);
-  const [currentPage, setCurrentPage] = useState(0); // Estado da página atual
-  const [totalPages, setTotalPages] = useState(0); // Estado do número total de páginas
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
 
   const navigate = useNavigate();
 
   const handleUserClick = (user: RegisteredUserData) => {
     navigate(`/dados-do-usuario`, { state: { user } });
-  }
+  };
 
   useEffect(() => {
-    const getAllUsers = async () => {
-      const usersData = await getRegisterUsers(currentPage); // Passe a página atual para a função de busca
-
+    const fetchData = async () => {
+      let usersData;
+      if (selectedCategory === "Médicos") {
+        usersData = await getUsersByType("MEDICO", currentPage);
+      } 
+      if (selectedCategory === "Contratantes") {
+        usersData = await getUsersByType("CONTRATANTE", currentPage);
+      } 
+     if (selectedCategory === "Todos") {
+       usersData = await getRegisterUsers(currentPage);
+      }
+  
       if (usersData?.content) {
         const usersFormatted = usersData?.content.reduce((acc: any, crr: any) => {
           const data: RegisteredUserData = {
@@ -47,27 +57,30 @@ const TableRegisterUsers = ({ selectedCategory }: Props) => {
           };
           return [...acc, data];
         }, [] as RegisteredUserAPI[]);
-
+  
         setAllUserData(usersFormatted);
-
-        // Atualize o número total de páginas
         setTotalPages(usersData.totalPages);
       }
-    }
-    getAllUsers();
-  }, [selectedCategory, currentPage]);
+    };
+  
+    fetchData();
+  }, [selectedCategory, currentPage,]);
 
-  // Função de mudança de página
-  const handlePageChange = (newPage: number) => {
+  const handlePageChange: Dispatch<SetStateAction<number>> = (newPage) => {
     setCurrentPage(newPage);
-  }
+  };
 
   return (
     <>
-      <TableComponent tHead={tHeadContent} tBody={allUserData} onUserClick={handleUserClick} />
-      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+      {/* <SearchBar onSearch={(searchValue) => handleSearch(searchValue)} /> */}
+      <TableComponent
+        tHead={tHeadContent}
+        tBody={allUserData}
+        onUserClick={handleUserClick}
+      />
+      <Pagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={handlePageChange} />
     </>
-  )
-}
+  );
+};
 
 export default TableRegisterUsers;

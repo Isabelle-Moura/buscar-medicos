@@ -12,7 +12,6 @@ import Category from '../../components/extras-components/category'
 import SearchInput from '../../components/inputs/search-bar'
 import TablePlans from '../../components/tables/table-plans'
 import PageTitle from '../../components/titles/page-title'
-import FilterButton from '../../components/extras-components/filter-button'
 
 // ---
 
@@ -55,11 +54,10 @@ const PlansPage = () => {
         </div>
         <WhiteBackground>
         <div style={{ display: 'flex', }}>
-            <div style={{ display: 'flex', alignItems: 'center', marginTop: '-6px'}}>
+            <div style={{ display: 'flex', alignItems: 'center',  justifyContent: 'center', margin: '-2px 0px 10px 0px'}}>
               <SearchInput />
-              <FilterButton />
             </div>
-            <div style={{ margin: '10px 0px 10px 37.5vw'}} >
+            <div style={{ margin: '1px 0px 8px 41.5vw'}} >
               <MidButton variant="DEFAULT" name="Novo Plano" onClick={handleCreateNewPlan} showIcon={true} />              
             </div>
         </div>

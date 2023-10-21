@@ -58,7 +58,9 @@ const NewSpecialtyPage = () => {
           <Input id="speciality-title" placeholder="Insira um título para a especialidade." value={specialtyData.name} onChange={e => setSpecialtyData({...specialtyData, name: e.target.value})} label="Nome" width="large" />
           <div style={{margin: '10px'}}>
             <StyledText style={{margin: '5px 0px 0px 0px'}}>Situação</StyledText>
-            <CustomSwitch checked={specialtyData.enabled} label={specialtyData.enabled ? 'Ativo' : 'Inativo'} />
+            <CustomSwitch checked={specialtyData.enabled} onClick={() => {
+            setSpecialtyData({ ...specialtyData, enabled: !specialtyData.enabled });
+            }} label={specialtyData.enabled ? 'Ativo' : 'Inativo'} />
           </div>
         </div>
         <div style={{ margin: '20px 10px', alignItems: 'center', justifyContent: 'center' }}>

@@ -8,7 +8,6 @@ import MidButton from '../../components/buttons/mid-button'
 import Category from '../../components/extras-components/category'
 import SearchInput from '../../components/inputs/search-bar'
 import PageTitle from '../../components/titles/page-title'
-import FilterButton from '../../components/extras-components/filter-button'
 import TableNotification from '../../components/tables/table-notification'
 
 // ---
@@ -31,11 +30,10 @@ const NotificationPage = () => {
         </div>
         <WhiteBackground>
           <div style={{ display: 'flex'}}>
-           <div style={{ display: 'flex', alignItems: 'center', marginTop: '-6px'}}>
+           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '-2px 0px 10px 0px'}}>
               <SearchInput />
-              <FilterButton />
             </div>
-            <div style={{ margin: '10px 0px 10px 39vw'  }} >
+            <div style={{ margin: '1px 0px 8px 42.5vw'}} >
               <MidButton variant="DEFAULT" name="Nova Notificação" onClick={() => navigate('/nova-notificacao')} showIcon={true} />
             </div>
           </div>

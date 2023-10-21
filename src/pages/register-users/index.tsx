@@ -10,6 +10,7 @@ import { getCounterTotalUsers } from '../../services/users-service/config'
 // Hooks
 import { useEffect, useState } from 'react'
 import SearchAndTotal from '../../components/register-users-components/search-and-total'
+// import SearchBar from '../../components/inputs/search-bar'
 
 // ---
 
@@ -21,7 +22,6 @@ const RegisterUsersPage = () => {
   const [allContractors, setAllContractors] = useState(0);
 
   const handleCategoryChange = (category: 'Todos' | 'Médicos' | 'Contratantes') => {
-    console.log("Category changed to:", category);
     setSelectedCategory(category);
   };
 

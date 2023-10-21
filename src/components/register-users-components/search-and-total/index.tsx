@@ -1,6 +1,3 @@
-// Component
-import SearchInput from '../../inputs/search-bar'
-
 // Style
 import * as S from './style'
 
@@ -15,7 +12,6 @@ const SearchAndTotal = ({ counter }: Props) => {
   return (
     <>
       <S.Container>
-        <SearchInput />
         <S.Total>
           Total de usuários <br /> <b>{counter}</b>
         </S.Total>

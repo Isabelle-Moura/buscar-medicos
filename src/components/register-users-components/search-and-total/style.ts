@@ -2,14 +2,14 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
-  margin-bottom: 10px;
   align-items: center;
-  gap: 45vw;
+  margin-bottom: -20px;
   `
 
 export const Total = styled.div`
   position: relative;
-  margin-left: 15px;
+  top: 2px;
+  left: 69vw;
   font-weight: ${({ theme }) => theme.fontWeight.medium};
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-size: ${({ theme }) => theme.fontSize.xsm};

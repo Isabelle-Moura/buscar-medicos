@@ -10,7 +10,7 @@ export const MenuItem = styled(Link)`
   align-items: center;
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-size: ${({ theme }) => theme.fontSize.xsm};
-  margin: 5px;
+  margin: 4px 7px;
   padding: 8px;
   border-radius: 10px;
   text-decoration: none;

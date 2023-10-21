@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+export const Container = styled.div`
+  margin: -20px 0px 10px 0px;
+`
+
 export const Input = styled.input`
   font-weight: ${({ theme }) => theme.fontWeight.medium};
   font-size: ${({ theme }) => theme.fontSize.xsm};

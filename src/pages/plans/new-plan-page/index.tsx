@@ -72,7 +72,9 @@ const NewPlanPage = () => {
             onChange={e => setPlanData({ ...planData, planTitle: e.target.value })}
           />
           <S.SwitchWrapper>
-            <CustomSwitch checked={planData.enabled} label={planData.enabled ? 'Ativo' : 'Inativo'} />
+            <CustomSwitch checked={planData.enabled} onClick={() => {
+            setPlanData({ ...planData, enabled: !planData.enabled });
+            }} label={planData.enabled ? 'Ativo' : 'Inativo'} />
           </S.SwitchWrapper>
           <Select label="Período" id="period" options={['Mensal', 'Semanal', 'Trimestral']} onChange={e => setPlanData({ ...planData, period: e.target.value })} />
         </S.InputSwitchSelectWrapper>

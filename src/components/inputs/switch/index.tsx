@@ -5,21 +5,21 @@ import * as S from './style'
 interface Props {
   label: string
   checked: boolean
-  onChange?: (checked: boolean) => void
+  onClick?: (checked: boolean) => void
 }
 
 // ---
 
-const CustomSwitch = ({ label, checked, onChange }: Props) => {
+const CustomSwitch = ({ label, checked, onClick }: Props) => {
   const handleToggle = () => {
-    if (onChange) {
-      onChange(!checked)
+    if (onClick) {
+      onClick(!checked)
     }
   }
 
   return (
     <S.Switch>
-      <S.HiddenCheckbox type="checkbox" checked={checked} onChange={handleToggle} />
+      <S.HiddenCheckbox type="checkbox" checked={checked} onClick={handleToggle} />
       <S.Slider checked={checked} />
       <S.Label>{label}</S.Label>
     </S.Switch>

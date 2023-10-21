@@ -1,14 +1,11 @@
-import UserDataInfo from '@/components/profile-page-components/user-data-info'
 import EditToolTip from '../../../../assets/icons/editTooltip.png'
 import EditIcon from '../../../../assets/icons/edit.png'
 import DeleteToolTip from '../../../../assets/icons/removeTooltip.png'
 import DeleteIcon from '../../../../assets/icons/delete.png'
-import BackToPageButton from '@/components/all-buttons/back-to-page-button'
-import LargeButton from '@/components/all-buttons/large-button'
-import AddButton from '@/components/all-buttons/mid-button'
-import Tooltip from '@/components/all-buttons/small-button-icon'
-import Input from '@/components/all-inputs/input'
-import ContentTitle from '@/components/titles-for-pages/title-content'
+import BackToPageButton from '../../../../components/buttons/back-to-page-button'
+import LargeButton from '../../../../components/buttons/large-button'
+import Input from '../../../../components/inputs/input'
+import { ContentTitle } from '../../style'
 
 const Admins = () => {
   return (
