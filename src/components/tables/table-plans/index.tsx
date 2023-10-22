@@ -18,6 +18,7 @@ import TableComponent from '../table-layout'
 import CustomSwitch from '../../inputs/switch'
 import DeleteConfirmation from '../../modals/delete-confirmation'
 import IconAndTooltipButton from '../../buttons/small-button-with-icon'
+import SearchBar from '../../inputs/search-bar'
 
 // Component Type
 interface PlansData {
@@ -89,6 +90,7 @@ const TablePlans = ({ selectedCategory }: Props) => {
 
   return (
     <>
+      <SearchBar />
       <TableComponent tHead={tHeadContent} tBody={allPlans} />
       {showDeleteConfirmation && (
           <DeleteConfirmation
@@ -105,7 +107,7 @@ const TablePlans = ({ selectedCategory }: Props) => {
                   window.location.reload()
                 }
               } catch (error) {
-                console.error('Erro ao excluir o plano', error);
+                console.error('Error at delete plan', error);
               } finally {
                 setShowDeleteConfirmation(false);
                 setItemToDeleteId(null);

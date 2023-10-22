@@ -1,42 +1,39 @@
 // Special Component
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom';
 
 // Style
-import * as S from './style'
+import * as S from './style';
 
-//Hooks 
-import { useState } from 'react'
+//Hooks
+import { useState } from 'react';
 
 // Components
-import SideMenu from './side-menu'
-import Header from './header'
-import SideMenuSmall from './side-menu/side-menu-small'
+import SideMenu from './side-menu';
+import Header from './header';
+import SideMenuSmall from './side-menu/side-menu-small';
 
 // ---
 
 const BaseLayout = () => {
-  const [menuOpen, setMenuOpen] = useState(true) 
+   const [menuOpen, setMenuOpen] = useState(true);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen)
-  }
-  return (
-    <>
-      <S.HeaderAndNavWrapper>
-        {menuOpen ? <SideMenu /> : <SideMenuSmall/>}
-        {/* <SideMenu className={menuOpen ? } toggleMenu={toggleMenu} /> */}
+   const toggleMenu = () => {
+      setMenuOpen(!menuOpen);
+   };
+   return (
+      <>
+         <S.HeaderAndNavWrapper>
+            {menuOpen ? <SideMenu /> : <SideMenuSmall />}
+            <S.UserAndMainWrapper>
+               <Header toggleMenu={toggleMenu} />
 
-        {/* Header and Main.  */}
-        <S.UserAndMainWrapper>
-          <Header toggleMenu={toggleMenu} />
+               <S.Main>
+                  <Outlet />
+               </S.Main>
+            </S.UserAndMainWrapper>
+         </S.HeaderAndNavWrapper>
+      </>
+   );
+};
 
-          <S.Main>
-            <Outlet />
-          </S.Main>
-        </S.UserAndMainWrapper>
-      </S.HeaderAndNavWrapper>
-    </>
-  )
-}
-
-export default BaseLayout
+export default BaseLayout;

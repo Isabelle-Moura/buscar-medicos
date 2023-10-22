@@ -18,6 +18,7 @@ import IconAndTooltipButton from "../../buttons/small-button-with-icon"
 import DeleteConfirmation from "../../modals/delete-confirmation"
 import CustomSwitch from "../../inputs/switch"
 import TableComponent from "../table-layout"
+import SearchBar from "../../inputs/search-bar"
 
 // Component Type
 type SpecialtyTable = {
@@ -81,6 +82,7 @@ const TableSpecialties = () => {
     
       return (
         <>
+          <SearchBar />
           <TableComponent tHead={tHeadContent} tBody={specialties} />
           {showDeleteConfirmation && (
           <DeleteConfirmation

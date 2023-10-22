@@ -15,4 +15,18 @@ interface NotificationAPI {
     ],
 }
 
+// Type for single table row information
+interface NotificationsData {
+    id: number
+    title: string,
+    sendingDate: string
+    actions: ReactNode
+}
+
 // Type for single information
+interface NotificationData {
+    title: string
+    sendingDate: string
+    message: string
+    type: string
+}

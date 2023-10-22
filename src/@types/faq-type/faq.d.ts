@@ -15,3 +15,9 @@ interface QuestionAPI {
 }
 
 // Type for single information
+interface QuestionData {
+    id: number 
+    title: string,
+    message: string,
+    type: string
+}

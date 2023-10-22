@@ -1,47 +1,45 @@
 // Hooks
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Components
-import WhiteBackground from '../../components/extras-components/white-background'
-import MidButton from '../../components/buttons/mid-button'
-import Category from '../../components/extras-components/category'
-import SearchInput from '../../components/inputs/search-bar'
-import PageTitle from '../../components/titles/page-title'
-import TableNotification from '../../components/tables/table-notification'
+import WhiteBackground from '../../components/extras-components/white-background';
+import MidButton from '../../components/buttons/mid-button';
+import Category from '../../components/extras-components/category';
+import PageTitle from '../../components/titles/page-title';
+import TableNotification from '../../components/tables/table-notification';
 
 // ---
 
 const NotificationPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState<'MEDICO' | 'CONTRATANTE'>('MEDICO')
-  
-  const handleCategoryChange = (category: 'MEDICO' | 'CONTRATANTE') => {
-    setSelectedCategory(category)
-  }
+   const [selectedCategory, setSelectedCategory] = useState<'MEDICO' | 'CONTRATANTE'>('MEDICO');
+   const navigate = useNavigate();
 
-  const navigate = useNavigate()
-  return (
-    <>
-      <div>
-        <PageTitle title="Notificações" />
-        <div style={{ display: 'flex', marginLeft: '15px' }}>
-          <Category name="Contratantes" onCategoryChange={() => handleCategoryChange('MEDICO')}/>
-          <Category name="Médicos" onCategoryChange={() => handleCategoryChange('CONTRATANTE')}/>
-        </div>
-        <WhiteBackground>
-          <div style={{ display: 'flex'}}>
-           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '-2px 0px 10px 0px'}}>
-              <SearchInput />
-            </div>
-            <div style={{ margin: '1px 0px 8px 42.5vw'}} >
-              <MidButton variant="DEFAULT" name="Nova Notificação" onClick={() => navigate('/nova-notificacao')} showIcon={true} />
-            </div>
-          </div>
-          <TableNotification selectedCategory={selectedCategory}/>
-        </WhiteBackground>
-      </div>
-    </>
-  )
-}
+   const handleCategoryChange = (category: 'MEDICO' | 'CONTRATANTE') => {
+      setSelectedCategory(category);
+   };
 
-export default NotificationPage
+   const handleCreateNewNotification = () => {
+      navigate('/nova-notificacao', { state: { tipo: selectedCategory } });
+   };
+
+   return (
+      <>
+         <div>
+            <PageTitle title="Notificações" />
+            <div style={{ display: 'flex', marginLeft: '15px' }}>
+               <Category name="Médicos" onCategoryChange={() => handleCategoryChange('MEDICO')} />
+               <Category name="Contratantes" onCategoryChange={() => handleCategoryChange('CONTRATANTE')} />
+            </div>
+            <WhiteBackground>
+               <div style={{ margin: '-2px 0px -20px 63.5vw' }}>
+                  <MidButton variant="DEFAULT" name="Nova Notificação" onClick={handleCreateNewNotification} showIcon={true} />
+               </div>
+               <TableNotification selectedCategory={selectedCategory} />
+            </WhiteBackground>
+         </div>
+      </>
+   );
+};
+
+export default NotificationPage;

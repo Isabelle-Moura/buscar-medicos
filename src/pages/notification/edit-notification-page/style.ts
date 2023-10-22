@@ -6,17 +6,9 @@ export const ContentWrapper = styled.div`
   }
 `
 
-export const StyledTitle = styled.div`
-  font-size: 18px;
-  font-weight: ${({ theme }) => theme.fontWeight.bold};
-  font-family: ${({ theme }) => theme.fonts.poppins};
-  margin: 5px 0px -25px -3px;
-  padding: 2px;
-`
-
 export const InputWrapper = styled.div`
    display: flex; 
-   margin: 0px 10px 2px 13px; 
+   margin: 9px; 
    align-items: center;
    justify-content: center;
 `

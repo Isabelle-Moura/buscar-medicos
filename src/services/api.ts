@@ -1,7 +1,7 @@
-import axios from 'axios'
+import axios from 'axios';
 
-const baseURL = 'https://api.buscarmedicos.izap.dev'
+const baseURL = 'https://api.buscarmedicos.izap.dev';
 
 export default axios.create({
-  baseURL
-})
+   baseURL,
+});

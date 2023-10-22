@@ -1,22 +1,22 @@
 // Style
-import * as S from './style'
+import * as S from './style';
 
 // Component Type
 interface Props {
-  name: string
-  type: 'button' | 'submit'
-  variant: 'DEFAULT' | 'CANCEL'
-  onClick?: () => void
+   name: string;
+   type: 'button' | 'submit';
+   variant: 'DEFAULT' | 'CANCEL';
+   onClick?: () => void;
 }
 
 // ---
 
 const LargeButton = ({ name, type, variant, onClick }: Props) => {
-  return (
-    <S.Button variant={variant} type={type} onClick={onClick}>
-      {name}
-    </S.Button>
-  )
-}
+   return (
+      <S.Button variant={variant} type={type} onClick={onClick}>
+         {name}
+      </S.Button>
+   );
+};
 
-export default LargeButton
+export default LargeButton;

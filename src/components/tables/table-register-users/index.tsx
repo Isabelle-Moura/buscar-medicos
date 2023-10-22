@@ -8,7 +8,7 @@ import Pagination from '../../extras-components/pagination';
 
 // Service
 import { getRegisterUsers, getUsersByType } from '../../../services/users-service/config';
-// import SearchBar from '../../inputs/search-bar';
+import SearchBar from '../../inputs/search-bar';
 
 // Component Type
 interface Props {
@@ -72,7 +72,7 @@ const TableRegisterUsers = ({ selectedCategory }: Props) => {
 
   return (
     <>
-      {/* <SearchBar onSearch={(searchValue) => handleSearch(searchValue)} /> */}
+      <SearchBar />
       <TableComponent
         tHead={tHeadContent}
         tBody={allUserData}

@@ -17,7 +17,7 @@ export const WomanImg = styled.img`
 export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 34.2%;
+  margin-top: 34%;
   margin-left: 3.9%;
 `
 
@@ -51,7 +51,7 @@ export const Welcome = styled.h3`
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-size: 22px;
   color: ${({ theme }) => theme.colors.secondWhite};
-  margin: 4px 0px;
+  margin: 7px 0px 2px 0px;
 `
 
 export const WelcomeSubtitle = styled.h4`

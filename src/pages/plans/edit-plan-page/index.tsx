@@ -18,118 +18,127 @@ import ConfirmationPopUp from '../../../components/modals/saved-notification';
 // ---
 
 const EditPlanPage = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const tipo = location.state?.tipo || 'contratante';
-  const id = location.state?.id;
+   const navigate = useNavigate();
+   const location = useLocation();
+   const tipo = location.state?.tipo || 'contratante';
+   const id = location.state?.id;
 
-  const [successNotification, setSuccessNotification] = useState(false);
-  
-  const closeNotification = () => {
-    setSuccessNotification(false);
-  };
+   const [successNotification, setSuccessNotification] = useState(false);
 
-  const [planData, setPlanData] = useState({
-    planTitle: '',
-    enabled: false,
-    period: '',
-    type: `${tipo}`,
-    values: '', 
-  });
+   const closeNotification = () => {
+      setSuccessNotification(false);
+   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (id) {
-        try {
-          const plan = await getPlanById(id);
-          if (plan) {
-            setPlanData({
-              ...plan,
-              values: plan.values.toString(),
-            });
-          }
-        } catch (error) {
-          console.error('Error in fetch plan data:', error);
-        }
-      }
-    };
-    fetchData();
-  }, [id]);
+   const [planData, setPlanData] = useState({
+      planTitle: '',
+      enabled: false,
+      period: '',
+      type: `${tipo}`,
+      values: '',
+   });
 
-  const handleSaveButton = async () => {
-    try {
-      const dataToUpdate = {
-        planTitle: planData.planTitle,
-        enabled: planData.enabled,
-        period: planData.period,
-        type: planData.type,
-        values: parseFloat(planData.values), 
+   useEffect(() => {
+      const fetchData = async () => {
+         if (id) {
+            try {
+               const plan = await getPlanById(id);
+               if (plan) {
+                  setPlanData({
+                     ...plan,
+                     values: plan.values.toString(),
+                  });
+               }
+            } catch (error) {
+               console.error('Error in fetch plan data:', error);
+            }
+         }
       };
+      fetchData();
+   }, [id]);
 
-      const response = await updatePlan(id, dataToUpdate);
+   const handleSaveButton = async () => {
+      try {
+         const dataToUpdate = {
+            planTitle: planData.planTitle,
+            enabled: planData.enabled,
+            period: planData.period,
+            type: planData.type,
+            values: parseFloat(planData.values),
+         };
 
-      if (response?.success === true) {
-        setTimeout(() => {
-          setSuccessNotification(true);
-        }, 1000);
+         const response = await updatePlan(id, dataToUpdate);
+
+         if (response?.success === true) {
+            setTimeout(() => {
+               setSuccessNotification(true);
+            }, 1000);
+         }
+      } catch (error) {
+         console.error('Error in plan update:', error);
       }
-    } catch (error) {
-      console.error('Error in plan update:', error);
-    }
-  };
+   };
 
-  return (
-    <>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <BackToPageButton link="/planos" name="Planos" />
-      </div>
-       <WhiteBackground>
-        <ContentTitle title='Editar Dados do Plano' />
-        <div style={{marginLeft: '15px'}}>
-        <div>
-          <div style={{display: 'flex', gap: '10px'}}>
-            <Input
-                id="plan-title"
-                placeholder=''
-                value={planData.planTitle}
-                onChange={(e) => setPlanData({ ...planData, planTitle: e.target.value })}
-                label="Título do Plano"
-                width="large"
-            />
-            <Select
-                label="Período"
-                id="period"
-                options={['Mensal', 'Semanal', 'Trimestral']}
-                value={planData.period}
-                onChange={(e) => setPlanData({ ...planData, period: e.target.value })}
-            />
-          </div>
+   return (
+      <>
+         <div
+            style={{
+               display: 'flex',
+               justifyContent: 'space-between',
+               alignItems: 'center',
+            }}
+         >
+            <BackToPageButton link="/planos" name="Planos" />
          </div>
-          <div style={{display: 'flex', gap: '10px'}}>
-            <Input
-                label="Valor"
-                id="value"
-                placeholder=''
-                value={planData.values}
-                onChange={(e) => setPlanData({ ...planData, values: e.target.value })}
+         <WhiteBackground>
+            <ContentTitle title="Editar Dados do Plano" />
+            <div style={{ marginLeft: '15px' }}>
+               <div>
+                  <div style={{ display: 'flex', gap: '10px' }}>
+                     <Input
+                        id="plan-title"
+                        placeholder=""
+                        value={planData.planTitle}
+                        onChange={(e) => setPlanData({ ...planData, planTitle: e.target.value })}
+                        label="Título do Plano"
+                        width="large"
+                     />
+                     <Select
+                        label="Período"
+                        id="period"
+                        options={['Mensal', 'Semanal', 'Trimestral']}
+                        value={planData.period}
+                        onChange={(e) => setPlanData({ ...planData, period: e.target.value })}
+                     />
+                  </div>
+               </div>
+               <div style={{ display: 'flex', gap: '10px' }}>
+                  <Input label="Valor" id="value" placeholder="" value={planData.values} onChange={(e) => setPlanData({ ...planData, values: e.target.value })} width="large" />
+                  <div style={{ marginTop: '35px', marginRight: '60px' }}>
+                     <CustomSwitch
+                        checked={planData.enabled}
+                        onClick={() => {
+                           setPlanData({ ...planData, enabled: !planData.enabled });
+                        }}
+                        label={planData.enabled ? 'Ativo' : 'Inativo'}
+                     />
+                  </div>
+               </div>
+               <div style={{ marginTop: '20px' }}>
+                  <LargeButton name="Salvar" type="submit" onClick={handleSaveButton} variant="DEFAULT" />
+               </div>
+            </div>
+         </WhiteBackground>
+         {successNotification && (
+            <ConfirmationPopUp
+               message="Dados alterados com sucesso!"
+               onClose={() => {
+                  closeNotification();
+                  navigate('/planos');
+               }}
             />
-            <div style={{marginTop: '35px', marginRight: '60px'}}>
-              <CustomSwitch checked={planData.enabled} onClick={() => {
-              setPlanData({ ...planData, enabled: !planData.enabled });
-              }} label={planData.enabled ? 'Ativo' : 'Inativo'} />
-            </div>
-         </div>
-            <div style={{ marginTop: '20px' }}>
-              <LargeButton name="Salvar" type='submit' onClick={handleSaveButton} variant="DEFAULT" />
-            </div>
-        </div>
-      </WhiteBackground>  
-      {successNotification && <ConfirmationPopUp message='Dados alterados com sucesso!' onClose={() => {
-        closeNotification();
-        navigate('/planos');
-      }} />}
-    </>
-  );
+         )}
+      </>
+   );
 };
 
 export default EditPlanPage;

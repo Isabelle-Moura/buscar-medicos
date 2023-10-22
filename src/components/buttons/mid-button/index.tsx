@@ -1,28 +1,28 @@
 //Icon
-import AddIcon from '../../../assets/icons/addicon.png'
+import AddIcon from '../../../assets/icons/addicon.png';
 
 // Style
-import * as S from './style'
+import * as S from './style';
 
 // Component Type
 interface Props {
-  name: string
-  onClick?: () => void
-  showIcon?: boolean
-  variant: 'DEFAULT' | 'CANCEL'
+   name: string;
+   onClick?: () => void;
+   showIcon?: boolean;
+   variant: 'DEFAULT' | 'CANCEL';
 }
 
 // ---
 
 const MidButton = ({ name, onClick, showIcon, variant }: Props) => {
-  return (
-    <>
-      <S.StyledButton variant={variant} onClick={onClick}>
-        {showIcon && <S.PlusIcon src={AddIcon} />}
-        {name}
-      </S.StyledButton>
-    </>
-  )
-}
+   return (
+      <>
+         <S.StyledButton variant={variant} onClick={onClick}>
+            {showIcon && <S.PlusIcon src={AddIcon} />}
+            {name}
+         </S.StyledButton>
+      </>
+   );
+};
 
-export default MidButton
+export default MidButton;

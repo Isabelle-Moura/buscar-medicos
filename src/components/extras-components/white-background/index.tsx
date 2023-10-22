@@ -1,22 +1,22 @@
 // Special Type
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
 
 // Style
-import * as S from './style'
+import * as S from './style';
 
 // Component Type
 interface Props {
-  children: ReactNode
+   children: ReactNode;
 }
 
 // ---
 
 const WhiteBackground = ({ children }: Props) => {
-  return (
-    <>
-      <S.Background>{children}</S.Background>
-    </>
-  )
-}
+   return (
+      <>
+         <S.Background>{children}</S.Background>
+      </>
+   );
+};
 
-export default WhiteBackground
+export default WhiteBackground;

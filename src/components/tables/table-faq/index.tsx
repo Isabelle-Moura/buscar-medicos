@@ -15,6 +15,7 @@ import { useEffect, useState, ReactNode } from "react"
 // Components
 import IconAndTooltipButton from "../../buttons/small-button-with-icon"
 import TableComponent from '../table-layout'
+import SearchBar from '../../inputs/search-bar'
 
 // Component Type
 interface QuestionsData {
@@ -60,7 +61,10 @@ const TableFaq = ({ selectedCategory }: Props) => {
     }, [selectedCategory])    
 
     return (
-        <TableComponent tHead={tHeadContent} tBody={allQuestions} />
+        <>
+          <SearchBar />
+          <TableComponent tHead={tHeadContent} tBody={allQuestions} />
+        </>
     )
 }
 
