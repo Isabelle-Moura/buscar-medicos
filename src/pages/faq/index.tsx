@@ -23,13 +23,13 @@ const FAQPage = () => {
       <>
          <div>
             <PageTitle title="FAQ (Perguntas Frequentes)" />
-            <div style={{ display: 'flex', marginLeft: '15px' }}>
+            <div style={{ display: 'flex', marginLeft: '25px' }}>
                <Category name="Médicos" onCategoryChange={() => handleCategoryChange('MEDICO')} />
                <Category name="Contratantes" onCategoryChange={() => handleCategoryChange('CONTRATANTE')} />
             </div>
             <WhiteBackground>
                <div style={{ margin: '-2px 0px -20px 63.5vw' }}>
-                  <MidButton variant="DEFAULT" name="Novo FAQ" onClick={() => navigate('/novo-faq')} showIcon={true} />
+                  <MidButton variant="DEFAULT" name="Novo FAQ" onClick={() => navigate('/novo-faq', { state: { tipo: selectedCategory } })} showIcon={true} />
                </div>
                <TableFaq selectedCategory={selectedCategory} />
             </WhiteBackground>
