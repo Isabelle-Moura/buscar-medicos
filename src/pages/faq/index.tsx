@@ -24,8 +24,8 @@ const FAQPage = () => {
          <div>
             <PageTitle title="FAQ (Perguntas Frequentes)" />
             <div style={{ display: 'flex', marginLeft: '15px' }}>
-               <Category name="Contratantes" onCategoryChange={() => handleCategoryChange('MEDICO')} />
-               <Category name="Médicos" onCategoryChange={() => handleCategoryChange('CONTRATANTE')} />
+               <Category name="Médicos" onCategoryChange={() => handleCategoryChange('MEDICO')} />
+               <Category name="Contratantes" onCategoryChange={() => handleCategoryChange('CONTRATANTE')} />
             </div>
             <WhiteBackground>
                <div style={{ margin: '-2px 0px -20px 63.5vw' }}>
