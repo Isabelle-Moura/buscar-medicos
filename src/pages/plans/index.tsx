@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 // Service
-import { getPlans, getPlansCounter } from '../../services/plans-service/config';
+import { getPlansCounter } from '../../services/plans-service/config';
 
 // Components
 import WhiteBackground from '../../components/extras-components/white-background';
@@ -31,12 +31,7 @@ const PlansPage = () => {
             setCounter(response);
          }
       };
-      const getData = async () => {
-         const response = await getPlans(selectedCategory);
-         return response;
-      };
       fetchCounter();
-      getData();
    }, [selectedCategory]);
 
    const handleCreateNewPlan = () => {
