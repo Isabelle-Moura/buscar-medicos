@@ -13,7 +13,6 @@ const TableDashboard = () => {
    const tHeadContent = ['Usuário', 'E-mail', 'Whatsapp', 'Tipo de Usuário'];
 
    const [userData, setUserData] = useState([]);
-   console.log(userData);
    const [allUserData, setAllUserData] = useState([]);
 
    useEffect(() => {
@@ -29,13 +28,13 @@ const TableDashboard = () => {
                      user: `${item.firstName + ' ' + item.lastName}`,
                      email: item.email,
                      whatsapp: item.phone,
-                     userType: item.profiles.length > 0 ? item.profiles[0].name : '-----',
+                     userType: item.profiles.length > 0 ? item.profiles[0].name : '-',
                   });
                });
                setAllUserData(dataInfo);
             }
          } catch (error) {
-            console.error('Erro ao pegar usuários!', error);
+            console.error('Error in fetch users!', error);
          }
       };
       getAllUsers();

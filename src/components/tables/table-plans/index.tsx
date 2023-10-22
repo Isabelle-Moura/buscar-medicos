@@ -85,7 +85,13 @@ const TablePlans = ({ selectedCategory }: Props) => {
          }
       };
 
-      getAllPlans();
+      const intervalId = setInterval(() => {
+         getAllPlans();
+      }, 1000);
+
+      return () => {
+         clearInterval(intervalId);
+      };
    }, [selectedCategory]);
 
    return (

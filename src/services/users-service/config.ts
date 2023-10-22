@@ -15,7 +15,7 @@ export const getRegisterUsers = async (page: number) => {
       });
       return users.data;
    } catch (error) {
-      console.error('Ocorreu um erro!', error);
+      console.error(`There's an error!`, error);
    }
 };
 
@@ -30,7 +30,7 @@ export const getUsersByType = async (type: string, page: number) => {
       });
       return users.data;
    } catch (error) {
-      console.error('Ocorreu um erro!', error);
+      console.error(`There's an error!`, error);
    }
 };
 
@@ -45,7 +45,7 @@ export const getSearch = async (search: string) => {
       });
       return users.data;
    } catch (error) {
-      console.error('Ocorreu um erro!', error);
+      console.error(`There's an error!`, error);
    }
 };
 
@@ -57,6 +57,6 @@ export const getCounterTotalUsers = async () => {
       });
       return totalAllUsers.data;
    } catch (error) {
-      console.error('Ocorreu um erro!', error);
+      console.error(`There's an error!`, error);
    }
 };

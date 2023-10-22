@@ -74,7 +74,13 @@ const TableSpecialties = () => {
          setSpecialties(specialtiesFormatted ?? []);
       };
 
-      fetchSpecialties();
+      const intervalId = setInterval(() => {
+         fetchSpecialties();
+      }, 1000);
+
+      return () => {
+         clearInterval(intervalId);
+      };
    }, [navigate]);
 
    return (

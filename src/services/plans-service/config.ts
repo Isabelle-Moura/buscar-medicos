@@ -11,7 +11,7 @@ export const getPlans = async (type: string) => {
       });
       return response.data.content;
    } catch (error) {
-      console.error('Ocorreu um erro na requisição de GET', error);
+      console.error(`There's an error with GET`, error);
    }
 };
 

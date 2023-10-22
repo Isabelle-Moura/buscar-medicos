@@ -1,11 +1,12 @@
 import api from '../api';
 
+const token = localStorage.getItem('token');
+
 // GET Totals for Card Counter
 export const counterDashboard = async () => {
    try {
-      const token = localStorage.getItem('token');
       const counterDashboard = await api.get(`/users/dashboard`, {
-         headers: { Authorization: token },
+         headers: { Authorization: `Bearer ${token}` },
       });
       return counterDashboard.data;
    } catch (error) {
@@ -16,9 +17,8 @@ export const counterDashboard = async () => {
 // GET Last Three Users
 export const getLastUsers = async () => {
    try {
-      const token = localStorage.getItem('token');
       const usersDashboard = await api.get(`/users?size=3`, {
-         headers: { Authorization: token },
+         headers: { Authorization: `Bearer ${token}` },
       });
       return usersDashboard.data;
    } catch (error) {

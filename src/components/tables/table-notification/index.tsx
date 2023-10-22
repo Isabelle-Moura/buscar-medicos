@@ -74,7 +74,13 @@ const TableNotification = ({ selectedCategory }: Props) => {
             setAllNotifications(notesFormatted);
          }
       };
-      getAllNotifications();
+      const intervalId = setInterval(() => {
+         getAllNotifications();
+      }, 1000);
+
+      return () => {
+         clearInterval(intervalId);
+      };
    }, [selectedCategory]);
 
    return (

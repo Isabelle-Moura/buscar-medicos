@@ -63,7 +63,13 @@ const TableRegisterUsers = ({ selectedCategory }: Props) => {
          }
       };
 
-      fetchData();
+      const intervalId = setInterval(() => {
+         fetchData();
+      }, 1000);
+
+      return () => {
+         clearInterval(intervalId);
+      };
    }, [selectedCategory, currentPage]);
 
    const handlePageChange: Dispatch<SetStateAction<number>> = (newPage) => {

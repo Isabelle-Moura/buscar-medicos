@@ -26,7 +26,7 @@ const token = localStorage.getItem('token');
 export const UserMe = async () => {
    try {
       const userMeData: AxiosResponse<UserMeApi> = await api.get(`/me`, {
-         headers: { Authorization: token },
+         headers: { Authorization: `Bearer ${token}` },
       });
 
       const firstName = userMeData.data.firstName;
@@ -37,6 +37,6 @@ export const UserMe = async () => {
 
       return userMeData.data;
    } catch (error) {
-      console.error('Ocorreu um erro!', error);
+      console.error("There's an error!", error);
    }
 };

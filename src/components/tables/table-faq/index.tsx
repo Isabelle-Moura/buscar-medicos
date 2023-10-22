@@ -79,7 +79,13 @@ const TableFaq = ({ selectedCategory }: Props) => {
             setAllQuestions(questionsFormatted);
          }
       };
-      getAllQuestions();
+      const intervalId = setInterval(() => {
+         getAllQuestions();
+      }, 1000);
+
+      return () => {
+         clearInterval(intervalId);
+      };
    }, [selectedCategory]);
 
    return (
