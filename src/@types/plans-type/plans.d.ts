@@ -15,12 +15,10 @@ type PlansAPI = {
 
 // Type for single information
 interface PlanData {
-   content: {
-      id?: number;
-      planTitle: string;
-      enabled: boolean;
-      period: string;
-      type: string;
-      values: number | string;
-   };
+   id?: number;
+   planTitle: string;
+   enabled: boolean;
+   period: string;
+   type: string;
+   values: number | string;
 }
