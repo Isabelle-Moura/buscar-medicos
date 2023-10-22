@@ -1,17 +1,39 @@
-import Tooltip from '@/components/all-buttons/small-button-icon'
-import EditIcon from '../../../../assets/icons/edit.png'
-import EditToolTip from '../../../../assets/icons/editTooltip.png'
-import UserDataInfo from '@/components/profile-page-components/user-data-info'
-import ContentTitle from '@/components/titles-for-pages/title-content'
+// Hooks
+import { useState, useEffect } from 'react';
+
+// Components
+import UserDataInfo from '../../../../components/extras-components/user-data-info';
+import ContentTitle from '../../../../components/titles/content-title';
+
+// Service
+import { UserMe } from '../../../../services/login-service/config';
 
 const UserData = () => {
-  return (
-    <>
-      <ContentTitle title="Dados" />
-      <UserDataInfo infoTitle="Nome" infoContent="Izabel" button={<Tooltip icon={EditIcon} tooltip={EditToolTip} hover="#edf1fc" />} />
-      <UserDataInfo infoTitle="E-mail" infoContent="izabel@gmail.com" button={<Tooltip icon={EditIcon} tooltip={EditToolTip} hover="#edf1fc" />} />
-    </>
-  )
-}
+   const [name, setName] = useState('');
+   const [email, setEmail] = useState('');
 
-export default UserData
+   useEffect(() => {
+      async function fetchData() {
+         try {
+            const response = await UserMe();
+            if (response) {
+               setName(response.firstName);
+               setEmail(response.email);
+            }
+         } catch (error) {
+            console.error("There's an error!", error);
+         }
+      }
+      fetchData();
+   }, []);
+
+   return (
+      <>
+         <ContentTitle title="Dados" />
+         <UserDataInfo infoTitle="Nome" infoContent={name} />
+         <UserDataInfo infoTitle="E-mail" infoContent={email} />
+      </>
+   );
+};
+
+export default UserData;

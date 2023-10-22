@@ -1,24 +1,23 @@
-import { Outlet } from 'react-router-dom'
-import * as S from './style'
-import LargeButtonArrow from '@/components/all-buttons/large-button-arrow'
-import PageTitle from '@/components/titles-for-pages/title-page'
+import { Outlet } from 'react-router-dom';
+import * as S from './style';
+import PageTitle from '../../../components/titles/page-title';
+import LargeButtonArrow from '../../../components/buttons/large-button-with-arrow';
 
 const UserProfilePage = () => {
-  return (
-    <>
-      <PageTitle title="Edição de Perfil" />
-      <S.Container>
-        <S.ButtonsWrapper>
-          <LargeButtonArrow name="Dados" link="dados" />
-          <LargeButtonArrow name="Alterar senha" link="alterar-senha" />
-          <LargeButtonArrow name="Administrar perfis" link="admins" />
-        </S.ButtonsWrapper>
-        <S.Main>
-          <Outlet />
-        </S.Main>
-      </S.Container>
-    </>
-  )
-}
+   return (
+      <>
+         <PageTitle title="Edição de Perfil" />
+         <S.Container>
+            <S.ButtonsWrapper>
+               <LargeButtonArrow name="Dados" link="dados" />
+               <LargeButtonArrow name="Visualizar perfis" link="visualizar-perfis" />
+            </S.ButtonsWrapper>
+            <S.Main style={{ marginLeft: '15px' }}>
+               <Outlet />
+            </S.Main>
+         </S.Container>
+      </>
+   );
+};
 
-export default UserProfilePage
+export default UserProfilePage;

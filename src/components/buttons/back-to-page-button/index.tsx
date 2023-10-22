@@ -6,19 +6,26 @@ import * as S from './style';
 
 // Component Type
 interface Props {
-   link: string;
+   link?: string;
+   onClick?: () => void;
    name: string;
 }
 
 // ---
 
-const BackToPageButton = ({ link, name }: Props) => {
+const BackToPageButton = ({ link, name, onClick }: Props) => {
    return (
       <>
          <S.ButtonAndTitleWrapper>
-            <S.StyledLink to={link}>
-               <S.Icon src={SideArrow} />
-            </S.StyledLink>
+            {link ? (
+               <S.StyledLink to={link}>
+                  <S.Icon src={SideArrow} />
+               </S.StyledLink>
+            ) : (
+               <S.StyledButton onClick={onClick}>
+                  <S.Icon src={SideArrow} />
+               </S.StyledButton>
+            )}
             <S.StyledTitle>{name}</S.StyledTitle>
          </S.ButtonAndTitleWrapper>
       </>

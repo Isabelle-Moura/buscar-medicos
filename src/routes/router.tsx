@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 //All pages
 // Dashboard + Profile
 import DashboardPage from '../pages/dashboard';
+import UserProfilePage from '../pages/dashboard/user-profile-page';
+import AllProfiles from '../pages/dashboard/user-profile-page/sub-pages/all-admins-page/admins';
+import UserData from '../pages/dashboard/user-profile-page/sub-pages/userData';
 
 // RegisteredUsers
 import RegisterUsersPage from '../pages/register-users';
@@ -45,6 +48,10 @@ export default function Router() {
             <Route index path="/" element={<LoginPage />} />
             <Route element={<BaseLayout />}>
                <Route path="/dashboard" element={<DashboardPage />} />
+               <Route path="/perfil-do-usuario" element={<UserProfilePage />}>
+                  <Route path="/perfil-do-usuario/dados" element={<UserData />} />
+                  <Route path="/perfil-do-usuario/visualizar-perfis" element={<AllProfiles />} />
+               </Route>
                <Route path="/usuarios-cadastrados" element={<RegisterUsersPage />} />
                <Route path="/dados-do-usuario" element={<UserDataPage />} />
                <Route path="/planos" element={<PlansPage />} />
