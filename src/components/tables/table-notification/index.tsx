@@ -99,7 +99,7 @@ const TableNotification = ({ selectedCategory }: Props) => {
                      if (itemId !== null) {
                         await deleteNotification(itemId);
                         getNotifications(selectedCategory);
-                        window.location.reload();
+                        navigate('/notificacoes');
                      }
                   } catch (error) {
                      console.error('Error at delete notification', error);

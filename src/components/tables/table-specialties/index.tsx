@@ -99,7 +99,7 @@ const TableSpecialties = () => {
                      if (itemId !== null) {
                         await deleteSpecialty(itemId);
                         getSpecialties();
-                        window.location.reload();
+                        navigate('/especialidades');
                      }
                   } catch (error) {
                      console.error('Erro ao excluir a especialidade', error);

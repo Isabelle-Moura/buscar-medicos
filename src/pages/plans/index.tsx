@@ -47,7 +47,7 @@ const PlansPage = () => {
       <>
          <div>
             <PageTitle title="Planos" />
-            <div style={{ display: 'flex', marginLeft: '15px' }}>
+            <div style={{ display: 'flex', marginLeft: '25px' }}>
                <Category name="Médicos" total={counter} onCategoryChange={() => handleCategoryChange('MEDICO')} />
                <Category name="Contratantes" total={counter} onCategoryChange={() => handleCategoryChange('CONTRATANTE')} />
             </div>

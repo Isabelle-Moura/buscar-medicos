@@ -27,7 +27,7 @@ const NotificationPage = () => {
       <>
          <div>
             <PageTitle title="Notificações" />
-            <div style={{ display: 'flex', marginLeft: '15px' }}>
+            <div style={{ display: 'flex', marginLeft: '25px' }}>
                <Category name="Médicos" onCategoryChange={() => handleCategoryChange('MEDICO')} />
                <Category name="Contratantes" onCategoryChange={() => handleCategoryChange('CONTRATANTE')} />
             </div>

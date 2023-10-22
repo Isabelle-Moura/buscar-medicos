@@ -104,7 +104,7 @@ const TableFaq = ({ selectedCategory }: Props) => {
                      if (itemId !== null) {
                         await deleteQuestion(itemId);
                         getQuestions(selectedCategory);
-                        window.location.reload();
+                        navigate('/faq');
                      }
                   } catch (error) {
                      console.error('Error at delete question', error);
