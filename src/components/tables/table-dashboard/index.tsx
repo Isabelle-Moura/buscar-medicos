@@ -13,6 +13,7 @@ const TableDashboard = () => {
    const tHeadContent = ['Usuário', 'E-mail', 'Whatsapp', 'Tipo de Usuário'];
 
    const [userData, setUserData] = useState([]);
+   console.log(userData);
    const [allUserData, setAllUserData] = useState([]);
 
    useEffect(() => {
