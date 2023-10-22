@@ -1,19 +1,19 @@
 // Style
-import * as S from './style'
+import * as S from './style';
 
 // Component Type
 interface Props {
-  title: string
+   title: string;
 }
 
 // ---
 
 const ContentTitle = ({ title }: Props) => {
-  return (
-    <>
-      <S.StyledTitle>{title}</S.StyledTitle>
-    </>
-  )
-}
+   return (
+      <>
+         <S.StyledTitle>{title}</S.StyledTitle>
+      </>
+   );
+};
 
-export default ContentTitle
+export default ContentTitle;

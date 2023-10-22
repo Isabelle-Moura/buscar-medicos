@@ -12,75 +12,71 @@ import SearchBar from '../../inputs/search-bar';
 
 // Component Type
 interface Props {
-  selectedCategory: string;
+   selectedCategory: string;
 }
 
 // ---
 
 const TableRegisterUsers = ({ selectedCategory }: Props) => {
-  const tHeadContent = ['Usuário', 'E-mail', 'Whatsapp', 'Especialidade', 'Cidade', 'Estado', 'Tipo de Usuário'];
+   const tHeadContent = ['Usuário', 'E-mail', 'Whatsapp', 'Especialidade', 'Cidade', 'Estado', 'Tipo de Usuário'];
 
-  const [allUserData, setAllUserData] = useState<RegisteredUserAPI[]>([]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [totalPages, setTotalPages] = useState(0);
+   const [allUserData, setAllUserData] = useState<RegisteredUserAPI[]>([]);
+   const [currentPage, setCurrentPage] = useState(0);
+   const [totalPages, setTotalPages] = useState(0);
 
-  const navigate = useNavigate();
+   const navigate = useNavigate();
 
-  const handleUserClick = (user: RegisteredUserData) => {
-    navigate(`/dados-do-usuario`, { state: { user } });
-  };
+   const handleUserClick = (user: RegisteredUserData) => {
+      navigate(`/dados-do-usuario`, { state: { user } });
+   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      let usersData;
-      if (selectedCategory === "Médicos") {
-        usersData = await getUsersByType("MEDICO", currentPage);
-      } 
-      if (selectedCategory === "Contratantes") {
-        usersData = await getUsersByType("CONTRATANTE", currentPage);
-      } 
-     if (selectedCategory === "Todos") {
-       usersData = await getRegisterUsers(currentPage);
-      }
-  
-      if (usersData?.content) {
-        const usersFormatted = usersData?.content.reduce((acc: any, crr: any) => {
-          const data: RegisteredUserData = {
-            id: crr.id,
-            user: `${crr.firstName + ' ' + crr.lastName}`,
-            email: crr.email,
-            whatsapp: crr.phone,
-            speciality: crr.specialties.name || "-",
-            city: crr.address || "-",
-            state: crr.address || "-",
-            userType: crr.profiles.length > 0 ? crr.profiles[0].name : "-"
-          };
-          return [...acc, data];
-        }, [] as RegisteredUserAPI[]);
-  
-        setAllUserData(usersFormatted);
-        setTotalPages(usersData.totalPages);
-      }
-    };
-  
-    fetchData();
-  }, [selectedCategory, currentPage,]);
+   useEffect(() => {
+      const fetchData = async () => {
+         let usersData;
+         if (selectedCategory === 'Médicos') {
+            usersData = await getUsersByType('MEDICO', currentPage);
+         }
+         if (selectedCategory === 'Contratantes') {
+            usersData = await getUsersByType('CONTRATANTE', currentPage);
+         }
+         if (selectedCategory === 'Todos') {
+            usersData = await getRegisterUsers(currentPage);
+         }
 
-  const handlePageChange: Dispatch<SetStateAction<number>> = (newPage) => {
-    setCurrentPage(newPage);
-  };
+         if (usersData?.content) {
+            const usersFormatted = usersData?.content.reduce((acc: any, crr: any) => {
+               const data: RegisteredUserData = {
+                  id: crr.id,
+                  user: `${crr.firstName + ' ' + crr.lastName}`,
+                  email: crr.email,
+                  whatsapp: crr.phone,
+                  speciality: crr.specialties.name || '-',
+                  city: crr.address || '-',
+                  state: crr.address || '-',
+                  userType: crr.profiles.length > 0 ? crr.profiles[0].name : '-',
+               };
+               return [...acc, data];
+            }, [] as RegisteredUserAPI[]);
 
-  return (
-    <>
-      <SearchBar />
-      <TableComponent
-        tHead={tHeadContent}
-        tBody={allUserData}
-        onUserClick={handleUserClick}
-      />
-      <Pagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={handlePageChange} />
-    </>
-  );
+            setAllUserData(usersFormatted);
+            setTotalPages(usersData.totalPages);
+         }
+      };
+
+      fetchData();
+   }, [selectedCategory, currentPage]);
+
+   const handlePageChange: Dispatch<SetStateAction<number>> = (newPage) => {
+      setCurrentPage(newPage);
+   };
+
+   return (
+      <>
+         <SearchBar />
+         <TableComponent tHead={tHeadContent} tBody={allUserData} onUserClick={handleUserClick} />
+         <Pagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={handlePageChange} />
+      </>
+   );
 };
 
 export default TableRegisterUsers;
