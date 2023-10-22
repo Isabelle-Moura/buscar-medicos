@@ -16,7 +16,7 @@ const SpecialitiesPage = () => {
       <>
          <PageTitle title="Especialidades" />
          <WhiteBackground>
-            <div style={{ margin: '-2px 0px -20px 62.3vw' }}>
+            <div style={{ position: 'fixed', right: '30px', top: '167px' }}>
                <MidButton variant="DEFAULT" name="Nova Especialidade" onClick={() => navigate('/nova-especialidade')} showIcon={true} />
             </div>
             <TableSpecialties />

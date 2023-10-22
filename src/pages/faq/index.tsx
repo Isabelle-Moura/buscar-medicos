@@ -28,7 +28,7 @@ const FAQPage = () => {
                <Category name="Contratantes" onCategoryChange={() => handleCategoryChange('CONTRATANTE')} />
             </div>
             <WhiteBackground>
-               <div style={{ margin: '-2px 0px -20px 63.5vw' }}>
+               <div style={{ position: 'fixed', right: '30px', top: '218px' }}>
                   <MidButton variant="DEFAULT" name="Novo FAQ" onClick={() => navigate('/novo-faq', { state: { tipo: selectedCategory } })} showIcon={true} />
                </div>
                <TableFaq selectedCategory={selectedCategory} />

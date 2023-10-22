@@ -52,7 +52,7 @@ const PlansPage = () => {
                <Category name="Contratantes" total={counter} onCategoryChange={() => handleCategoryChange('CONTRATANTE')} />
             </div>
             <WhiteBackground>
-               <div style={{ margin: '-2px 0px -20px 63.5vw' }}>
+               <div style={{ position: 'fixed', right: '30px', top: '218px' }}>
                   <MidButton variant="DEFAULT" name="Novo Plano" onClick={handleCreateNewPlan} showIcon={true} />
                </div>
                <TablePlans selectedCategory={selectedCategory} />
