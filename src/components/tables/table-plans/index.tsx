@@ -110,7 +110,7 @@ const TablePlans = ({ selectedCategory }: Props) => {
                      if (itemId !== null) {
                         await deletePlan(itemId);
                         getPlans(selectedCategory);
-                        window.location.reload();
+                        navigate('/planos');
                      }
                   } catch (error) {
                      console.error('Error at delete plan', error);
