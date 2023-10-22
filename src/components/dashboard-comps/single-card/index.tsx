@@ -3,9 +3,9 @@ import * as S from './style';
 
 // Component Type
 interface Props {
-   name: string; // Name to display in the card
-   info: string | number; // Additional information for the card
-   icon: string; // Icon to be displayed in the card
+   name: string;
+   info: string | number;
+   icon: string;
    variant?: 'doctors' | 'contractors';
    status?: 'available' | 'unavailable';
 }
@@ -13,11 +13,13 @@ interface Props {
 // ---
 
 const Card = ({ name, info, icon, variant, status }: Props) => {
+   // Colors associated with each card variant
    const variantColors = {
       doctors: '#004ce8',
       contractors: '#ffb801',
    };
 
+   // Colors associated with each card status
    const statusColors = {
       available: '#00c240',
       unavailable: '#ff3333',
@@ -32,12 +34,12 @@ const Card = ({ name, info, icon, variant, status }: Props) => {
                      backgroundColor: variant ? variantColors[variant] : status ? statusColors[status] : '',
                   }}
                >
-                  <img src={icon} width="30px" height="30px" />
+                  <img src={icon} width="30px" height="30px" /> {/* Card icon */}
                </S.IconsColorsTotal>
             </div>
             <div>
-               <S.CardName>{name}</S.CardName>
-               <S.CardInfo>{info}</S.CardInfo>
+               <S.CardName>{name}</S.CardName> {/* Name displayed on card */}
+               <S.CardInfo>{info}</S.CardInfo> {/* Additional information displayed on the card */}
             </div>
          </S.CardBackground>
       </>

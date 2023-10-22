@@ -14,7 +14,7 @@ interface Props {
 const LargeButton = ({ name, type, variant, onClick }: Props) => {
    return (
       <S.Button variant={variant} type={type} onClick={onClick}>
-         {name}
+         {name} {/* Button text */}
       </S.Button>
    );
 };

@@ -15,31 +15,32 @@ import FaqIcon from '../../../assets/icons/faq.png';
 const SideMenu = () => {
    return (
       <>
+         {/* Side menu background */}
          <S.MenuBackground>
-            <S.Logo src={Logo} />
+            <S.Logo src={Logo} /> {/* Application logo */}
             <S.MenuItem to="/dashboard">
-               <img src={DashboardIcon} />
-               <S.MenuItemName>Dashboard</S.MenuItemName>
+               <img src={DashboardIcon} /> {/* Dashboard icon */}
+               <S.MenuItemName>Dashboard</S.MenuItemName> {/* Menu item name */}
             </S.MenuItem>
             <S.MenuItem to="/usuarios-cadastrados">
-               <img src={RegisterUsersIcon} />
-               <S.MenuItemName>Usuários Cadastrados</S.MenuItemName>
+               <img src={RegisterUsersIcon} /> {/* Registered users icon */}
+               <S.MenuItemName>Usuários Cadastrados</S.MenuItemName> {/* Menu item name */}
             </S.MenuItem>
             <S.MenuItem to="/planos">
-               <img src={PlansIcon} />
-               <S.MenuItemName>Planos</S.MenuItemName>
+               <img src={PlansIcon} /> {/* Plans icon */}
+               <S.MenuItemName>Planos</S.MenuItemName> {/* Menu item name */}
             </S.MenuItem>
             <S.MenuItem to="/especialidades">
-               <img src={SpecialitiesIcon} />
-               <S.MenuItemName>Especialidades</S.MenuItemName>
+               <img src={SpecialitiesIcon} /> {/* Specialties icon */}
+               <S.MenuItemName>Especialidades</S.MenuItemName> {/* Menu item name */}
             </S.MenuItem>
             <S.MenuItem to="/notificacoes">
-               <img src={NotificationsIcon} />
-               <S.MenuItemName>Notificações</S.MenuItemName>
+               <img src={NotificationsIcon} /> {/* Notifications icon */}
+               <S.MenuItemName>Notificações</S.MenuItemName> {/* Menu item name */}
             </S.MenuItem>
             <S.MenuItem to="/faq">
-               <img src={FaqIcon} />
-               <S.MenuItemName>FAQ</S.MenuItemName>
+               <img src={FaqIcon} /> {/* FAQ icon */}
+               <S.MenuItemName>FAQ</S.MenuItemName> {/* Menu item name */}
             </S.MenuItem>
          </S.MenuBackground>
       </>

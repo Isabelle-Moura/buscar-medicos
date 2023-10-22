@@ -28,26 +28,30 @@ interface Props {
 // ---
 
 const TableNotification = ({ selectedCategory }: Props) => {
-   const [allNotifications, setAllNotifications] = useState<NotificationsData[]>([]);
-   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-   const [itemToDeleteId, setItemToDeleteId] = useState<number | null>(null);
-   const [currentPage, setCurrentPage] = useState(0);
-   const [totalPages, setTotalPages] = useState(0);
-   const [isSearching, setIsSearching] = useState(false);
+   const [allNotifications, setAllNotifications] = useState<NotificationsData[]>([]); // State to store all datas
+   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false); // State to control display of delete confirmation
+   const [itemToDeleteId, setItemToDeleteId] = useState<number | null>(null); // State to store the ID of item to be deleted
+   const [currentPage, setCurrentPage] = useState(0); // State to control the current page
+   const [totalPages, setTotalPages] = useState(0); // State to store the total number of pages
+   const [isSearching, setIsSearching] = useState(false); // State to control whether a search is happening or not
 
-   const navigate = useNavigate();
+   const navigate = useNavigate(); // Hook for navigation
 
+   // Click handler for the delete action
    const handleRemoveClick = (itemId: number) => {
       setItemToDeleteId(itemId);
       setShowDeleteConfirmation(true);
    };
 
+   // Function to close the confirmation modal
    const closeModal = () => {
       setShowDeleteConfirmation(false);
    };
 
+   // Table header
    const tHeadContent = ['Título', 'Data de envio', 'Ações'];
 
+   // Effect to search and fetch
    useEffect(() => {
       const getAllNotifications = async () => {
          if (isSearching === false) {
@@ -91,6 +95,7 @@ const TableNotification = ({ selectedCategory }: Props) => {
       };
    }, [selectedCategory, currentPage, isSearching]);
 
+   // Function to perform the search
    const handleSearch = async (searchTerm: string) => {
       setIsSearching(true);
       if (isSearching === true) {
@@ -129,6 +134,7 @@ const TableNotification = ({ selectedCategory }: Props) => {
       }
    };
 
+   // Change Page Handler
    const handlePageChange: Dispatch<SetStateAction<number>> = (newPage) => {
       setCurrentPage(newPage);
    };

@@ -21,10 +21,14 @@ interface Props {
 // ---
 
 const Header = ({ toggleMenu }: Props) => {
+   // State to control user background visibility
    const [userBackgroundVisible, setUserBackgroundVisible] = useState(false);
+
+   // States to store the user's name and email
    const [name, setName] = useState('');
    const [email, setEmail] = useState('');
 
+   // useEffect to fetch user data when the component is mounted
    useEffect(() => {
       async function fetchData() {
          try {
@@ -40,6 +44,7 @@ const Header = ({ toggleMenu }: Props) => {
       fetchData();
    }, []);
 
+   // Function to toggle user background visibility
    const toggleUserBackground = () => {
       setUserBackgroundVisible(!userBackgroundVisible);
    };
@@ -47,9 +52,11 @@ const Header = ({ toggleMenu }: Props) => {
    return (
       <>
          <S.UserAndMenuIcon>
+            {/* Menu icon */}
             <button onClick={toggleMenu} style={{ cursor: 'pointer', marginLeft: '5px', border: 'none', background: 'none' }}>
                <img src={MenuIcon} alt="Menu" />
             </button>
+            {/* User view */}
             <S.UserWrapper>
                <img src={UserIcon} style={{ marginRight: '10px' }} alt="User" />
                <S.UserDataWrapper>
@@ -59,6 +66,7 @@ const Header = ({ toggleMenu }: Props) => {
                <div>
                   <S.UserSettingsButton onClick={toggleUserBackground}>
                      <img src={UserSettingsIcon} alt="User Settings" />
+                     {/* Display user settings when userBackgroundVisible is true */}
                      {userBackgroundVisible && <UserSettings />}
                   </S.UserSettingsButton>
                </div>

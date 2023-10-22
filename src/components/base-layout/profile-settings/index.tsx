@@ -12,8 +12,10 @@ const UserSettings = () => {
    return (
       <>
          <div>
+            {/* User Settings Background */}
             <S.Background src={UserBackground} />
             <S.ButtonsWrapper>
+               {/* Link to user profile page */}
                <S.StyledLink to="/perfil-do-usuario/dados">
                   Usuário
                   <img src={UserProfileIcon} />
@@ -21,6 +23,7 @@ const UserSettings = () => {
 
                <S.HR />
 
+               {/* Link to login page */}
                <S.StyledLink to="/">
                   Sair
                   <img src={LogOutIcon} />

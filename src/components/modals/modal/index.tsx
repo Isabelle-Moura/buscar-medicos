@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 
 // Component Type
 interface Props {
-   children: ReactNode;
+   children: ReactNode; // React Node: is the same as we say "React Element"
    onClose: () => void;
 }
 
@@ -15,8 +15,9 @@ interface Props {
 const Modal = ({ onClose, children }: Props) => {
    return (
       <S.ModalWrapper onClick={onClose}>
-         {/* Is a function in JS used to prevent a multiplication event from continuing to spread through the DOM element hierarchy */}
+         {/* Click event on the modal wrapper calls the onClose function to close the modal */}
          <S.ModalContent onClick={(e) => e.stopPropagation()}>{children}</S.ModalContent>
+         {/* Click event on modal content prevents propagation of the event to the modal wrapper */}
       </S.ModalWrapper>
    );
 };

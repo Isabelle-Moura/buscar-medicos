@@ -18,8 +18,8 @@ const MidButton = ({ name, onClick, showIcon, variant }: Props) => {
    return (
       <>
          <S.StyledButton variant={variant} onClick={onClick}>
-            {showIcon && <S.PlusIcon src={AddIcon} />}
-            {name}
+            {showIcon && <S.PlusIcon src={AddIcon} />} {/* Plus icon (if showIcon is true) */}
+            {name} {/* Button text */}
          </S.StyledButton>
       </>
    );

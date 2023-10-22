@@ -11,8 +11,8 @@ const LargeButtonArrow = ({ name, link }: Props) => {
    return (
       <>
          <S.StyledButton to={link}>
-            {name}
-            <img src={ArrowIcon} />
+            {name} {/* Button text */}
+            <img src={ArrowIcon} /> {/* Right arrow icon */}
          </S.StyledButton>
       </>
    );

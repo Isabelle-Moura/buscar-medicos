@@ -15,25 +15,25 @@ import FaqIcon from '../../../../assets/icons/faq.png';
 const SideMenuSmall = () => {
    return (
       <S.MenuBackground>
-         <S.Logo src={SmallLogo} />
+         <S.Logo src={SmallLogo} /> {/* Small logo */}
          <S.Icons>
             <S.MenuItem to="/dashboard">
-               <img src={DashboardIcon} alt="Dashboard" />
+               <img src={DashboardIcon} alt="Dashboard" /> {/* Dashboard icon */}
             </S.MenuItem>
             <S.MenuItem to="/usuarios-cadastrados">
-               <img src={RegisterUsersIcon} alt="Usuários Cadastrados" />
+               <img src={RegisterUsersIcon} alt="Registered Users" /> {/* Icon of registered users */}
             </S.MenuItem>
-            <S.MenuItem to="/planos">
-               <img src={PlansIcon} alt="Planos" />
+            <S.MenuItem to="/plans">
+               <img src={PlansIcon} alt="Plans" /> {/* Plans icon */}
             </S.MenuItem>
-            <S.MenuItem to="/especialidades">
-               <img src={SpecialitiesIcon} alt="Especialidades" />
+            <S.MenuItem to="/specialidades">
+               <img src={SpecialitiesIcon} alt="Specialties" /> {/* Specialties icon */}
             </S.MenuItem>
-            <S.MenuItem to="/notificacoes">
-               <img src={NotificationsIcon} alt="Notificações" />
+            <S.MenuItem to="/notifications">
+               <img src={NotificationsIcon} alt="Notifications" /> {/* Notifications icon */}
             </S.MenuItem>
             <S.MenuItem to="/faq">
-               <img src={FaqIcon} alt="FAQ" />
+               <img src={FaqIcon} alt="FAQ" /> {/* FAQ icon */}
             </S.MenuItem>
          </S.Icons>
       </S.MenuBackground>

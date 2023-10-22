@@ -13,7 +13,7 @@ const SearchAndTotal = ({ counter }: Props) => {
       <>
          <S.Container>
             <S.Total>
-               Total de usuários <br /> <b>{counter}</b>
+               Total de usuários <br /> <b>{counter}</b> {/* To display counter number */}
             </S.Total>
          </S.Container>
       </>

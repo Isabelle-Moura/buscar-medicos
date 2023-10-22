@@ -14,7 +14,7 @@ interface Props {
 const WhiteBackground = ({ children }: Props) => {
    return (
       <>
-         <S.Background>{children}</S.Background>
+         <S.Background>{children}</S.Background> {/* Renders the content within background */}
       </>
    );
 };

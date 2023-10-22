@@ -12,14 +12,14 @@ const UserDataInfo = ({ infoTitle, infoContent, button, scndButton }: Props) => 
    return (
       <>
          <S.Container>
-            <S.InfoName>{infoTitle}</S.InfoName>
-            <S.InfoContent>{infoContent}</S.InfoContent>
+            <S.InfoName>{infoTitle}</S.InfoName> {/* Information title */}
+            <S.InfoContent>{infoContent}</S.InfoContent> {/* Information content */}
             <S.ButtonsWrapper>
-               <div>{button}</div>
-               <div>{scndButton}</div>
+               <div>{button}</div> {/* Button (if provided) */}
+               <div>{scndButton}</div> {/* Second button (if provided) */}
             </S.ButtonsWrapper>
          </S.Container>
-         <S.Hr />
+         <S.Hr /> {/* Horizontal line to separate information */}
       </>
    );
 };

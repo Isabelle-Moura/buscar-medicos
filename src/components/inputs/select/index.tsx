@@ -20,10 +20,10 @@ const Select = ({ label, id, options, ...props }: Props) => {
          <S.SelectWrapper>
             <S.Select {...props} id={id}>
                {options.map((item, index) => (
-                  <option key={index}>{item}</option>
+                  <option key={index}>{item}</option> // Maps and renders available options
                ))}
             </S.Select>
-            <S.Label htmlFor={id}>{label}</S.Label>
+            <S.Label htmlFor={id}>{label}</S.Label> {/* Label associated with the selection field */}
          </S.SelectWrapper>
       </>
    );

@@ -17,15 +17,19 @@ import { counterDashboard } from '../../../services/dashboard-service/config';
 // ---
 
 const Cards = () => {
+   // State to store information about doctors
    const [doctor, setDoctors] = useState({ total: 0, available: 0, unavailable: 0 });
+
+   // State to store information about contractors
    const [contractors, setContractors] = useState({ total: 0, available: 0, unavailable: 0 });
 
+   // UseEffect to search for information about doctors
    useEffect(() => {
       const fetchDoctorsInfos = async () => {
          try {
             const responseDoctors = await counterDashboard();
             if (responseDoctors) {
-               setDoctors(responseDoctors.doctor);
+               setDoctors(responseDoctors.doctor); // Defines information about doctors in the state
             }
          } catch (error) {
             console.error('Error fetching data:', error);
@@ -35,12 +39,13 @@ const Cards = () => {
       fetchDoctorsInfos();
    }, []);
 
+   // UseEffect to fetch information about contractors
    useEffect(() => {
       const fetchContractorsInfos = async () => {
          try {
             const responseContractors = await counterDashboard();
             if (responseContractors) {
-               setContractors(responseContractors.contractor);
+               setContractors(responseContractors.contractor); // Defines information about contractors in the state
             }
          } catch (error) {
             console.error('Error fetching data:', error);
@@ -57,8 +62,8 @@ const Cards = () => {
                <S.ContentTitle>Médicos</S.ContentTitle>
                <S.CardsWrapper>
                   <Card icon={DoctorsIcon} name="Total" info={doctor.total} variant="doctors" />
-                  <Card icon={DoctorsIcon} name="Disponíveis" info={doctor.available} status="available" />
-                  <Card icon={DoctorsIcon} name="Indisponíveis" info={doctor.unavailable} status="unavailable" />
+                  <Card icon={DoctorsIcon} name="Disponível" info={doctor.available} status="available" />
+                  <Card icon={DoctorsIcon} name="Indisponível" info={doctor.unavailable} status="unavailable" />
                </S.CardsWrapper>
             </S.WhiteBackground>
 

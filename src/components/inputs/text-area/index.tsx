@@ -17,15 +17,17 @@ interface Props extends DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaEle
 
 const TextArea = ({ id, label, width, placeholder, ...rest }: Props) => {
    // ...rest allows you to pass all the default properties of a <textarea> element to the rendered element.
+
+   // Custom style for text field based on specified width
    const inputStyle = {
-      width: width === 'large' ? '650px' : '320px',
+      width: width === 'large' ? '650px' : '320px', // Field width (default or large)
    };
 
    return (
       <>
          <S.Container>
-            <S.Input id={id} style={{ ...inputStyle }} placeholder={placeholder} {...rest} />
-            <S.Label htmlFor={id}>{label}</S.Label>
+            <S.Input id={id} style={{ ...inputStyle }} placeholder={placeholder} {...rest} /> {/* Text field */}
+            <S.Label htmlFor={id}>{label}</S.Label> {/* Label associated with the text field */}
          </S.Container>
       </>
    );
