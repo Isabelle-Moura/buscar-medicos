@@ -40,7 +40,7 @@ const RegisterUsersPage = () => {
    return (
       <>
          <PageTitle title="Usuários Cadastrados |" category={selectedCategory} />
-         <div style={{ display: 'flex', marginLeft: '25px' }}>
+         <div style={{ display: 'flex', marginLeft: '28px' }}>
             <Category name="Todos" total={totalUsers} onCategoryChange={() => handleCategoryChange('Todos')} />
             <Category name="Contratantes" total={allContractors} onCategoryChange={() => handleCategoryChange('Contratantes')} />
             <Category name="Médicos" total={allDoctors} onCategoryChange={() => handleCategoryChange('Médicos')} />

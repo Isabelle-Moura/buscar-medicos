@@ -23,7 +23,7 @@ const FAQPage = () => {
       <>
          <div>
             <PageTitle title="FAQ (Perguntas Frequentes)" />
-            <div style={{ display: 'flex', marginLeft: '25px' }}>
+            <div style={{ display: 'flex', marginLeft: '28px' }}>
                <Category name="Médicos" onCategoryChange={() => handleCategoryChange('MEDICO')} />
                <Category name="Contratantes" onCategoryChange={() => handleCategoryChange('CONTRATANTE')} />
             </div>
