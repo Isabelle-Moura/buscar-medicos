@@ -7,10 +7,10 @@ import RemoveIcon from '../../../assets/icons/delete.png';
 import RemoveToolTip from '../../../assets/icons/removeTooltip.png';
 
 // Table Service
-import { deleteQuestion, getQuestions } from '../../../services/faq-service/config';
+import { deleteQuestion, getQuestionSearch, getQuestions } from '../../../services/faq-service/config';
 
 // Hooks
-import { useEffect, useState, ReactNode } from 'react';
+import { useEffect, useState, ReactNode, Dispatch, SetStateAction } from 'react';
 
 // Components
 import IconAndTooltipButton from '../../buttons/small-button-with-icon';
@@ -18,6 +18,7 @@ import TableComponent from '../table-layout';
 import SearchBar from '../../inputs/search-bar';
 import { useNavigate } from 'react-router-dom';
 import DeleteConfirmation from '../../modals/delete-confirmation';
+import Pagination from '../../extras-components/pagination';
 
 // Component Type
 interface QuestionsData {
@@ -36,6 +37,9 @@ const TableFaq = ({ selectedCategory }: Props) => {
    const [allQuestions, setAllQuestions] = useState<QuestionsData[]>([]);
    const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
    const [itemToDeleteId, setItemToDeleteId] = useState<number | null>(null);
+   const [currentPage, setCurrentPage] = useState(0);
+   const [totalPages, setTotalPages] = useState(0);
+   const [isSearching, setIsSearching] = useState(false);
 
    const navigate = useNavigate();
 
@@ -52,46 +56,92 @@ const TableFaq = ({ selectedCategory }: Props) => {
 
    useEffect(() => {
       const getAllQuestions = async () => {
-         const questions = await getQuestions(selectedCategory);
-         let questionsFormatted: QuestionsData[] = [];
+         if (isSearching === false) {
+            const questions = await getQuestions(selectedCategory, currentPage);
+            let questionsFormatted: QuestionsData[] = [];
 
-         if (questions) {
-            questionsFormatted = questions?.reduce((acc, crr) => {
-               const question: QuestionsData = {
-                  id: crr.id,
-                  title: crr.title,
-                  actions: (
-                     <div style={{ display: 'flex' }}>
-                        <IconAndTooltipButton
-                           icon={VisualizeIcon}
-                           tooltip={VisualizeToolTip}
-                           hover="#EDEDED"
-                           onClick={() => navigate('/visualizar-faq', { state: { id: crr.id } })}
-                        />
-                        <IconAndTooltipButton icon={EditIcon} tooltip={EditToolTip} hover="#edf1fc" onClick={() => navigate('/editar-faq', { state: { id: crr.id } })} />
-                        <IconAndTooltipButton icon={RemoveIcon} tooltip={RemoveToolTip} hover="#ffe1e1" onClick={() => handleRemoveClick(crr.id)} />
-                     </div>
-                  ),
-               };
-               return [...acc, question];
-            }, [] as QuestionsData[]);
+            if (questions?.content) {
+               questionsFormatted = questions?.content.reduce((acc, crr) => {
+                  const question: QuestionsData = {
+                     id: crr.id,
+                     title: crr.title,
+                     actions: (
+                        <div style={{ display: 'flex' }}>
+                           <IconAndTooltipButton
+                              icon={VisualizeIcon}
+                              tooltip={VisualizeToolTip}
+                              hover="#EDEDED"
+                              onClick={() => navigate('/visualizar-faq', { state: { id: crr.id } })}
+                           />
+                           <IconAndTooltipButton icon={EditIcon} tooltip={EditToolTip} hover="#edf1fc" onClick={() => navigate('/editar-faq', { state: { id: crr.id } })} />
+                           <IconAndTooltipButton icon={RemoveIcon} tooltip={RemoveToolTip} hover="#ffe1e1" onClick={() => handleRemoveClick(crr.id)} />
+                        </div>
+                     ),
+                  };
+                  return [...acc, question];
+               }, [] as QuestionsData[]);
 
-            setAllQuestions(questionsFormatted);
+               setAllQuestions(questionsFormatted);
+               setTotalPages(questions.totalPages);
+            }
          }
       };
+
       const intervalId = setInterval(() => {
          getAllQuestions();
-      }, 1000);
+      }, 2000);
 
       return () => {
          clearInterval(intervalId);
       };
-   }, [selectedCategory]);
+   }, [selectedCategory, currentPage, isSearching]);
+
+   const handleSearch = async (searchTerm: string) => {
+      setIsSearching(true);
+      if (isSearching === true) {
+         try {
+            const searchResults = await getQuestionSearch(searchTerm);
+
+            if (searchResults) {
+               const questionsFormatted = searchResults?.reduce((acc: any, crr: any) => {
+                  const question: QuestionsData = {
+                     id: crr.id,
+                     title: crr.title,
+                     actions: (
+                        <div style={{ display: 'flex' }}>
+                           <IconAndTooltipButton
+                              icon={VisualizeIcon}
+                              tooltip={VisualizeToolTip}
+                              hover="#EDEDED"
+                              onClick={() => navigate('/visualizar-faq', { state: { id: crr.id } })}
+                           />
+                           <IconAndTooltipButton icon={EditIcon} tooltip={EditToolTip} hover="#edf1fc" onClick={() => navigate('/editar-faq', { state: { id: crr.id } })} />
+                           <IconAndTooltipButton icon={RemoveIcon} tooltip={RemoveToolTip} hover="#ffe1e1" onClick={() => handleRemoveClick(crr.id)} />
+                        </div>
+                     ),
+                  };
+                  return [...acc, question];
+               }, [] as QuestionsData[]);
+
+               setAllQuestions(questionsFormatted);
+            }
+         } catch (error) {
+            console.error('Error while performing search:', error);
+         } finally {
+            setIsSearching(false);
+         }
+      }
+   };
+
+   const handlePageChange: Dispatch<SetStateAction<number>> = (newPage) => {
+      setCurrentPage(newPage);
+   };
 
    return (
       <>
-         <SearchBar />
+         <SearchBar onSearch={(searchTerm) => handleSearch(searchTerm)} />
          <TableComponent tHead={tHeadContent} tBody={allQuestions} />
+         <Pagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={handlePageChange} />
          {showDeleteConfirmation && (
             <DeleteConfirmation
                onClose={closeModal}
@@ -103,7 +153,7 @@ const TableFaq = ({ selectedCategory }: Props) => {
                   try {
                      if (itemId !== null) {
                         await deleteQuestion(itemId);
-                        getQuestions(selectedCategory);
+                        getQuestions(selectedCategory, currentPage);
                         navigate('/faq');
                      }
                   } catch (error) {

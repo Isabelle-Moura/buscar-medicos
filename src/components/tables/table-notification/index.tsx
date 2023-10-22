@@ -7,10 +7,10 @@ import RemoveIcon from '../../../assets/icons/delete.png';
 import RemoveToolTip from '../../../assets/icons/removeTooltip.png';
 
 // Hooks
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 // Table Service
-import { deleteNotification, getNotifications } from '../../../services/notification-service/config';
+import { deleteNotification, getNotificationSearch, getNotifications } from '../../../services/notification-service/config';
 
 // Components
 import IconAndTooltipButton from '../../buttons/small-button-with-icon';
@@ -18,6 +18,7 @@ import TableComponent from '../table-layout';
 import SearchBar from '../../inputs/search-bar';
 import { useNavigate } from 'react-router-dom';
 import DeleteConfirmation from '../../modals/delete-confirmation';
+import Pagination from '../../extras-components/pagination';
 
 // Component Type
 interface Props {
@@ -30,6 +31,9 @@ const TableNotification = ({ selectedCategory }: Props) => {
    const [allNotifications, setAllNotifications] = useState<NotificationsData[]>([]);
    const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
    const [itemToDeleteId, setItemToDeleteId] = useState<number | null>(null);
+   const [currentPage, setCurrentPage] = useState(0);
+   const [totalPages, setTotalPages] = useState(0);
+   const [isSearching, setIsSearching] = useState(false);
 
    const navigate = useNavigate();
 
@@ -46,47 +50,94 @@ const TableNotification = ({ selectedCategory }: Props) => {
 
    useEffect(() => {
       const getAllNotifications = async () => {
-         const notifications = await getNotifications(selectedCategory);
-         let notesFormatted: NotificationsData[] = [];
+         if (isSearching === false) {
+            const notifications = await getNotifications(selectedCategory, currentPage);
+            let notesFormatted: NotificationsData[] = [];
 
-         if (notifications) {
-            notesFormatted = notifications?.reduce((acc, crr) => {
-               const notification: NotificationsData = {
-                  id: crr.id,
-                  title: crr.title,
-                  sendingDate: crr.sendingDate.slice(0, 10),
-                  actions: (
-                     <div style={{ display: 'flex' }}>
-                        <IconAndTooltipButton
-                           icon={VisualizeIcon}
-                           tooltip={VisualizeToolTip}
-                           hover="#EDEDED"
-                           onClick={() => navigate('/visualizar-notificacao', { state: { id: crr.id } })}
-                        />
-                        <IconAndTooltipButton icon={EditIcon} tooltip={EditToolTip} hover="#edf1fc" onClick={() => navigate('/editar-notificacao', { state: { id: crr.id } })} />
-                        <IconAndTooltipButton icon={RemoveIcon} tooltip={RemoveToolTip} hover="#ffe1e1" onClick={() => handleRemoveClick(crr.id)} />
-                     </div>
-                  ),
-               };
-               return [...acc, notification];
-            }, [] as NotificationsData[]);
+            if (notifications?.content) {
+               notesFormatted = notifications?.content.reduce((acc, crr) => {
+                  const notification: NotificationsData = {
+                     id: crr.id,
+                     title: crr.title,
+                     sendingDate: crr.sendingDate.slice(0, 10),
+                     actions: (
+                        <div style={{ display: 'flex' }}>
+                           <IconAndTooltipButton
+                              icon={VisualizeIcon}
+                              tooltip={VisualizeToolTip}
+                              hover="#EDEDED"
+                              onClick={() => navigate('/visualizar-notificacao', { state: { id: crr.id } })}
+                           />
+                           <IconAndTooltipButton icon={EditIcon} tooltip={EditToolTip} hover="#edf1fc" onClick={() => navigate('/editar-notificacao', { state: { id: crr.id } })} />
+                           <IconAndTooltipButton icon={RemoveIcon} tooltip={RemoveToolTip} hover="#ffe1e1" onClick={() => handleRemoveClick(crr.id)} />
+                        </div>
+                     ),
+                  };
+                  return [...acc, notification];
+               }, [] as NotificationsData[]);
 
-            setAllNotifications(notesFormatted);
+               setAllNotifications(notesFormatted);
+               setTotalPages(notifications.totalPages);
+            }
          }
       };
+
       const intervalId = setInterval(() => {
          getAllNotifications();
-      }, 1000);
+      }, 2000);
 
       return () => {
          clearInterval(intervalId);
       };
-   }, [selectedCategory]);
+   }, [selectedCategory, currentPage, isSearching]);
+
+   const handleSearch = async (searchTerm: string) => {
+      setIsSearching(true);
+      if (isSearching === true) {
+         try {
+            const searchResults = await getNotificationSearch(searchTerm);
+
+            if (searchResults) {
+               const notesFormatted = searchResults?.reduce((acc: any, crr: any) => {
+                  const notification: NotificationsData = {
+                     id: crr.id,
+                     title: crr.title,
+                     sendingDate: crr.sendingDate ? crr.sendingDate.slice(0, 10) : '-',
+                     actions: (
+                        <div style={{ display: 'flex' }}>
+                           <IconAndTooltipButton
+                              icon={VisualizeIcon}
+                              tooltip={VisualizeToolTip}
+                              hover="#EDEDED"
+                              onClick={() => navigate('/visualizar-notificacao', { state: { id: crr.id } })}
+                           />
+                           <IconAndTooltipButton icon={EditIcon} tooltip={EditToolTip} hover="#edf1fc" onClick={() => navigate('/editar-notificacao', { state: { id: crr.id } })} />
+                           <IconAndTooltipButton icon={RemoveIcon} tooltip={RemoveToolTip} hover="#ffe1e1" onClick={() => handleRemoveClick(crr.id)} />
+                        </div>
+                     ),
+                  };
+                  return [...acc, notification];
+               }, [] as NotificationsData[]);
+
+               setAllNotifications(notesFormatted);
+            }
+         } catch (error) {
+            console.error('Error while performing search:', error);
+         } finally {
+            setIsSearching(false);
+         }
+      }
+   };
+
+   const handlePageChange: Dispatch<SetStateAction<number>> = (newPage) => {
+      setCurrentPage(newPage);
+   };
 
    return (
       <>
-         <SearchBar />
+         <SearchBar onSearch={(searchTerm) => handleSearch(searchTerm)} />
          <TableComponent tHead={tHeadContent} tBody={allNotifications} />
+         <Pagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={handlePageChange} />
          {showDeleteConfirmation && (
             <DeleteConfirmation
                onClose={closeModal}
@@ -98,7 +149,7 @@ const TableNotification = ({ selectedCategory }: Props) => {
                   try {
                      if (itemId !== null) {
                         await deleteNotification(itemId);
-                        getNotifications(selectedCategory);
+                        getNotifications(selectedCategory, currentPage);
                         navigate('/notificacoes');
                      }
                   } catch (error) {

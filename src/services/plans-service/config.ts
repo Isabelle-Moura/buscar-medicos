@@ -4,14 +4,33 @@ import api from '../api';
 const token = localStorage.getItem('token');
 
 // GET request
-export const getPlans = async (type: string) => {
+export const getPlans = async (type: string, page: number) => {
    try {
       const response: AxiosResponse<PlansAPI> = await api.get(`/plans?type=${type}`, {
          headers: { Authorization: `Bearer ${token}` },
+         params: {
+            page,
+            size: 4,
+         },
+      });
+      return response.data;
+   } catch (error) {
+      console.error(`There's an error with GET`, error);
+   }
+};
+
+// GET request for search data
+export const getPlanSearch = async (search: string) => {
+   try {
+      const response = await api.get(`/plans`, {
+         headers: { Authorization: `Bearer ${token}` },
+         params: {
+            search,
+         },
       });
       return response.data.content;
    } catch (error) {
-      console.error(`There's an error with GET`, error);
+      console.error(`There's an error!`, error);
    }
 };
 
@@ -23,14 +42,14 @@ export const getPlansCounter = async (type: string) => {
       });
       return response.data.numberOfElements;
    } catch (error) {
-      console.error('Ocorreu um erro na requisição de GET', error);
+      console.error(`There's an error with GET`, error);
    }
 };
 
 // GET ID request
 export const getPlanById = async (id: number) => {
    try {
-      const response: AxiosResponse<PlanData> = await api.get(`/plans/${id}`, {
+      const response = await api.get(`/plans/${id}`, {
          headers: { Authorization: `Bearer ${token}` },
       });
       return response.data;

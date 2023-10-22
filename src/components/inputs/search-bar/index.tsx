@@ -1,53 +1,41 @@
-// import { ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, KeyboardEvent, useEffect, useState } from 'react';
-import SearchIcon from '../../../assets/icons/search.png'
-import * as S from './style'
+import { ChangeEvent, KeyboardEventHandler, useState } from 'react';
+import SearchIcon from '../../../assets/icons/search.png';
+import * as S from './style';
 
-// import { useLocation } from 'react-router-dom';
+interface Props {
+   onSearch: (searchTerm: string) => void;
+}
 
-// interface Props extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-//   onSearch: (search: string) => void { onSearch }: Props
-// }
+const SearchBar = ({ onSearch }: Props) => {
+   // Initially, the search state is empty
+   const [searchValue, setSearchValue] = useState('');
 
-const SearchBar = () => {
-  // const location = useLocation();
-  // const queryParams = new URLSearchParams(location.search);
-  // const initialSearchValue = queryParams.get('search') || '';
+   // Updates the search state when the user types in the search bar
+   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+      const newValue = e.target.value;
+      setSearchValue(newValue);
+   };
 
-  // const [searchValue, setSearchValue] = useState(initialSearchValue);
+   // Pressing Enter, performs the search
+   const handleKeyPress: KeyboardEventHandler<HTMLInputElement> = (e) => {
+      if (e.key === 'Enter') {
+         handleSearch();
+      }
+   };
 
-  // const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   const newValue = e.target.value;
-  //   setSearchValue(newValue);
-  // };
+   // Performs the search when the user clicks the search icon
+   const handleSearch = () => {
+      if (onSearch) {
+         onSearch(searchValue);
+      }
+   };
 
-  // const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-  //   if (e.key === 'Enter') {
-  //     handleSearch();
-  //   }
-  // };
-
-  // const handleSearch = () => {
-  //   onSearch(searchValue);
-  // };
-
-  // useEffect(() => {
-  //   // Update the search input value whenever the URL query parameter changes
-  //   const queryValue = queryParams.get('search') || '';
-  //   setSearchValue(queryValue);
-  // }, [location.search]);
-
-  return (
-    <S.Container>
-      <S.Input
-        type="text"
-        placeholder="Pesquise uma palavra-chave"
-        // value={searchValue}
-        // onChange={handleSearchChange}
-        // onKeyDown={handleKeyPress}
-      />
-      <S.Icon src={SearchIcon} />
-    </S.Container>
-  );
+   return (
+      <S.Container>
+         <S.Input type="text" placeholder="Pesquise uma palavra-chave" value={searchValue} onChange={handleSearchChange} onKeyPress={handleKeyPress} />
+         <S.Icon src={SearchIcon} onClick={handleSearch} />
+      </S.Container>
+   );
 };
 
 export default SearchBar;

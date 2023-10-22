@@ -11,13 +11,6 @@ import BackToPageButton from '../../../components/buttons/back-to-page-button';
 import Input from '../../../components/inputs/input';
 import CustomSwitch from '../../../components/inputs/switch';
 import ContentTitle from '../../../components/titles/content-title';
-import IconAndTooltipButton from '../../../components/buttons/small-button-with-icon';
-
-// Icons
-import EditIcon from '../../../assets/icons/edit.png';
-import EditToolTip from '../../../assets/icons/editTooltip.png';
-import RemoveIcon from '../../../assets/icons/delete.png';
-import RemoveToolTip from '../../../assets/icons/removeTooltip.png';
 
 // ---
 
@@ -56,13 +49,7 @@ const VisualizePlanPage = () => {
 
    return (
       <>
-         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <BackToPageButton link="/planos" name="Planos" />
-            <div style={{ display: 'flex', marginRight: '70px' }}>
-               <IconAndTooltipButton icon={EditIcon} tooltip={EditToolTip} hover="#edf1fc" />
-               <IconAndTooltipButton icon={RemoveIcon} tooltip={RemoveToolTip} hover="#ffe1e1" />
-            </div>
-         </div>
+         <BackToPageButton link="/planos" name="Planos" />
          <WhiteBackground>
             <ContentTitle title="Dados do plano" />
             <div style={{ marginLeft: '15px' }}>

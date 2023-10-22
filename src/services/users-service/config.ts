@@ -37,13 +37,13 @@ export const getUsersByType = async (type: string, page: number) => {
 // GET request for search data
 export const getSearch = async (search: string) => {
    try {
-      const users = await api.get(`/users`, {
+      const response = await api.get(`/users`, {
          headers: { Authorization: `Bearer ${token}` },
          params: {
             search,
          },
       });
-      return users.data;
+      return response.data.content;
    } catch (error) {
       console.error(`There's an error!`, error);
    }

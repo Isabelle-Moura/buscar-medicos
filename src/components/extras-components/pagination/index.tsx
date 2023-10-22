@@ -31,6 +31,10 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }: PaginationProps
    };
    const pageRange = generatePageButtons();
 
+   if (totalPages === 0) {
+      return null;
+   }
+
    return (
       <S.PaginationContainer>
          <S.ArrowsButton disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)} style={{ cursor: currentPage === 1 ? 'not-allowed' : 'pointer' }}>

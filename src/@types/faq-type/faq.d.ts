@@ -12,6 +12,7 @@ interface QuestionAPI {
          type: string;
       }
    ];
+   totalPages: number;
 }
 
 // Type for single information

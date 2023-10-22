@@ -4,14 +4,33 @@ import api from '../api';
 const token = localStorage.getItem('token');
 
 // GET request
-export const getSpecialties = async () => {
+export const getSpecialties = async (page: number) => {
    try {
       const response: AxiosResponse<SpecialtiesApi> = await api.get(`/specialties`, {
          headers: { Authorization: `Bearer ${token}` },
+         params: {
+            page,
+            size: 5,
+         },
+      });
+      return response.data;
+   } catch (error) {
+      console.error(`There's an error with GET`, error);
+   }
+};
+
+// GET request for search data
+export const getSpecialtySearch = async (search: string) => {
+   try {
+      const response = await api.get(`/specialties`, {
+         headers: { Authorization: `Bearer ${token}` },
+         params: {
+            search,
+         },
       });
       return response.data.content;
    } catch (error) {
-      console.error(`There's an error with GET`, error);
+      console.error(`There's an error!`, error);
    }
 };
 
