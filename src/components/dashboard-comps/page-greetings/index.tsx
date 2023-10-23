@@ -45,7 +45,7 @@ const Greetings = () => {
                   <img src={CalendarIcon} style={{ marginRight: '6px' }} /> {/* Calendar icon */}
                   <span>{currentDate}</span> {/* Current date obtained dynamically */}
                </S.CallendarBackground>
-               <S.Welcome>Bem-vindo(a)!</S.Welcome> {/* Welcome greeting */}
+               <S.Welcome>Seja bem-vindo(a)!</S.Welcome> {/* Welcome greeting */}
                <S.WelcomeSubtitle>
                   Neste painel você pode administrar <br /> seu site de uma maneira simples e prática.
                </S.WelcomeSubtitle>{' '}
