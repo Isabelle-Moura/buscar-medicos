@@ -47,8 +47,8 @@ const Greetings = () => {
                </S.CallendarBackground>
                <S.Welcome>Seja bem-vindo(a)!</S.Welcome> {/* Welcome greeting */}
                <S.WelcomeSubtitle>
-                  Neste painel você pode administrar <br /> seu site de uma maneira simples e prática.
-               </S.WelcomeSubtitle>{' '}
+                  Neste painel você poderá administrar <br /> seu site de forma simples e prática.
+               </S.WelcomeSubtitle>
                {/* Welcome subtitle */}
             </S.ContentWrapper>
          </S.GreenBackground>
