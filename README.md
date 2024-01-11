@@ -8,7 +8,7 @@
   
 - My beautiful and wonderful family: **Mom, Nana, Jessie, Grandpa, and Grandma**. I love you guys so badly!
   
-- And last but not least, to all of my amazing teachers: **Profº Alberto Timóteo, Profº Lucas Ferreira, and Profº Marcos Azevedo (Marcão)**,
+- And last but not least, to all of my amazing teachers: **Profº Alberto Timóteo, Profº Lucas Ferreira, Profº Marcos Azevedo (Marcão) and Monitor Jessie Moura**.
 
 ### Without you guys, this wouldn't be possible. Thank you!!! 💖💖💖
 
